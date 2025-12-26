@@ -6,7 +6,7 @@ client = TelegramClient(
     system_version = os.getenv('SYSTEM_VERSION'),
     device_model = os.getenv('DEVICE_MODEL'),
     app_version = os.getenv('APP_VERSION'),
-    local_addr = [f'0.0.0.0:{os.getenv('PORT')}']).start(bot_token=os.getenv('TOKEN'))
+    local_addr = f'0.0.0.0:{os.getenv('PORT')}').start(bot_token=os.getenv('TOKEN'))
 
 @client.on(events.NewMessage)
 async def my_event_handler(event):
