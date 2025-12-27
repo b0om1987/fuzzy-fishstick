@@ -21,5 +21,6 @@ async def my_event_handler(event):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=os.getenv('PORT'), debug=False)
-client.start()
-client.run_until_disconnected()
+#client.start()
+#client.run_until_disconnected()
+
