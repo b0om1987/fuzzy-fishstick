@@ -5,7 +5,8 @@ client = TelegramClient(
     'Edge Sesh', os.getenv('API_ID'), os.getenv('API_HASH'),
     system_version = os.getenv('SYSTEM_VERSION'),
     device_model = os.getenv('DEVICE_MODEL'),
-    app_version = os.getenv('APP_VERSION')).start(bot_token=os.getenv('TOKEN'))
+    app_version = os.getenv('APP_VERSION'),
+    local_addr = ('0.0.0.0', 19133).start(bot_token=os.getenv('TOKEN'))
 
 @client.on(events.NewMessage)
 async def my_event_handler(event):
@@ -14,3 +15,4 @@ async def my_event_handler(event):
 
 client.start()
 client.run_until_disconnected()
+
