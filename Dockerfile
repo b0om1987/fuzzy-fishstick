@@ -4,4 +4,4 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 EXPOSE 19133
-ENTRYPOINT ["python", "main.py"]
+ENTRYPOINT ["python3", "main.py"] -r
