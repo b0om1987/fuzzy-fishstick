@@ -5,6 +5,7 @@ import random
 from random import randint, choice
 from datetime import datetime, timedelta, timezone
 from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
 
 global database
 
@@ -105,3 +106,4 @@ async def _mainline(event):
 
 client.start()
 client.run_until_disconnected()
+
