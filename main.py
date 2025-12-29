@@ -44,7 +44,8 @@ async def _mainline(event):
     
     global database
     
-    if event.chat_id == TltFlood or event.chat_id == GreenFucker or event.chat_id == PMs or event.chat_id == TestingChat:
+    #if event.chat_id == TltFlood or event.chat_id == GreenFucker or event.chat_id == PMs or event.chat_id == TestingChat:
+    if True:
         
         if 'оскорби' in event.raw_text:
             post_id = await event.get_reply_message()
@@ -65,7 +66,8 @@ async def _mainline(event):
             else:
                 await event.respond(f'{choice(prefix)}, {choice(adressing)} {pref1}, {pref2} {osk1}, {choice(postfix)}, {osk2} {choice(mat)}')
             
-    if event.chat_id == TltFlood or event.chat_id == TestingChat:
+    #if event.chat_id == TltFlood or event.chat_id == TestingChat:
+    if True:
             
         if 'иди на работу' in event.raw_text:
             if randint(1, 100) != 42:
@@ -111,5 +113,6 @@ async def _mainline(event):
 
 client.start()
 client.run_until_disconnected()
+
 
 
