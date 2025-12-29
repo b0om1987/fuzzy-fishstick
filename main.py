@@ -20,6 +20,11 @@ global oskprefix
 global oskmain
 global postfix
 
+TltFlood = -1003481332457
+TestingChat = -5121472948
+PMs = 1272926086
+GreenFucker = -1002097505858
+
 prefix = ['Блять', 'Сука', 'Ёб твою мать', 'Пиздец', 'Ёбаный свет блять', 'Как меня это заебло уже', 'Да я мать твою ебал', 'Мудило гороховое', 'Ой не щекочи мою залупу', 'Я ору с тебя', 'Мать моя женщина', 'Ну сука, блять', 'Ой блять', 'Ой сука', 'Да ебучий случай', 'Ебать мой рот наковальней блять', 'Ох пиздец', 'Да ты меня заебёшь']
 adressing = ['ты,', 'да ты же', 'какое ты', 'ты нахуй', 'ты сука', 'ты вообще не стесняешься даже что ты', 'ебало вальни,', 'ебать ты', 'какое же ты', 'я дурею, какое ты']
 oskprefix = ['прогнившее', 'тупое', 'уёбищное', 'ебанутое', 'безмозглое', 'бесполезное', 'ебаное', 'блядское', 'дегенератское', 'позорное', 'богатое', 'ёбнутое', 'тупорылое', 'безмамное', 'отвратительное', 'пиздоблядское, охуевшее', 'ничтожное', 'ебануто трахнутое божественными силами', 'хуёвое, обесцененное просто', 'не нужное никому нахуй в мире', 'припизднутое', 'бредящее', 'ублюдошное', 'залупососное', 'гомеопатическое']
@@ -39,7 +44,7 @@ async def _mainline(event):
     
     global database
     
-    if event.chat_id == TltFlood or event.chat_id == -1002097505858 or event.chat_id == 1272926086 or event.chat_id == -5121472948:
+    if event.chat_id == TltFlood or event.chat_id == GreenFucker or event.chat_id == PMs or event.chat_id == TestingChat:
         
         if 'оскорби' in event.raw_text:
             post_id = await event.get_reply_message()
@@ -60,7 +65,7 @@ async def _mainline(event):
             else:
                 await event.respond(f'{choice(prefix)}, {choice(adressing)} {pref1}, {pref2} {osk1}, {choice(postfix)}, {osk2} {choice(mat)}')
             
-    if event.chat_id == TltFlood or event.chat_id == -5121472948:
+    if event.chat_id == TltFlood or event.chat_id == TestingChat:
             
         if 'иди на работу' in event.raw_text:
             if randint(1, 100) != 42:
@@ -106,4 +111,5 @@ async def _mainline(event):
 
 client.start()
 client.run_until_disconnected()
+
 
