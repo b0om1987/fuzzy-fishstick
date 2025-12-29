@@ -70,6 +70,10 @@ async def _mainline(event):
     if True:
             
         if 'иди на работу' in event.raw_text:
+            mongo_client.admin.command('ping')
+                print("Successfully connected to MongoDB Atlas!")
+            except Exception as e:
+                print("Error connecting to MongoDB Atlas:", str(e))
             if randint(1, 100) != 42:
                 payout = randint(10, 99)
                 user = await event.get_sender()
@@ -113,6 +117,7 @@ async def _mainline(event):
 
 client.start()
 client.run_until_disconnected()
+
 
 
 
