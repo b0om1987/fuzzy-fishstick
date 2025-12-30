@@ -39,7 +39,7 @@ mat = ['блять', 'сука', 'нахуй']
     app_version = os.getenv('APP_VERSION'),
     local_addr = ('0.0.0.0', 19133)).start(bot_token=os.getenv('TOKEN'))
 
-@client.on(events.NewMessage(pattern='Борис (.+)'))
+@client.on(events.NewMessage(pattern='Ботис (.+)'))
 async def _mainline(event):
     
     global database
@@ -75,9 +75,10 @@ async def _mainline(event):
                 user = await event.get_sender()
                 account = database.find_one({'userId': str(event.sender_id)})
                 if account:
-                    if event.date - datetime.strptime(str(account['lastWork']), "%Y-%m-%d %H:%M:%S%z") >= timedelta(minutes = 10):
+                    if event.date - datetime.strptime(f'{account["lastWork"]}+00:00', '%Y-%m-%d %H:%M:%S%z') >= timedelta(minutes = 10):
                         await event.respond(f'Так уж и быть, {user.first_name}, ради тебя - сгоняю.\n> Вы заработали {payout} скамкоинов!', parse_mode='markdown')
-                        database.update_one(account, {'$inc': {'scamCoins': payout}})
+                        database.update_one(account, {'$inc': {'scamCoins': payout}, '$set': {'lastWork': event.date}})
+                        
                     else:
                         await event.respond(f'{user.first_name}, ну ты {choice(oskmain)} {choice(oskprefix)}, дай отдохнуть {choice(mat)}... Заебался я в край {choice(mat)}')
                 else:
@@ -87,7 +88,6 @@ async def _mainline(event):
                         'lastWork': event.date
                         })
                     await event.respond(f'Так уж и быть, {user.first_name}, ради тебя - сгоняю.\n> Вы заработали {payout} скамкоинов!', parse_mode='markdown')
-                
                 
             # Пасхалка
             else:
@@ -113,6 +113,7 @@ async def _mainline(event):
 
 client.start()
 client.run_until_disconnected()
+
 
 
 
