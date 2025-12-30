@@ -9,7 +9,7 @@ from pymongo.server_api import ServerApi
 
 global database
 
-uri = f"mongodb+srv://wuifir:{os.getenv('DB_ACCESS')}@clustermain.0qpaogm.mongodb.net/?appName=ClusterMain"
+uri = f"mongodb+srv://autobot:{os.getenv('DB_ACCESS')}@clustermain.0qpaogm.mongodb.net/?appName=ClusterMain"
 mongo_client = MongoClient(uri, server_api=ServerApi('1'))
 db = mongo_client[os.getenv('DB_NAME')]
 database = db[os.getenv('COLLECTION_NAME')]
@@ -117,6 +117,7 @@ async def _mainline(event):
 
 client.start()
 client.run_until_disconnected()
+
 
 
 
