@@ -32,14 +32,14 @@ oskmain = ['чмо', 'животное', 'хуйло', 'ебланище', 'тр
 postfix = ['у тебя вообще нету алиби', 'и твоя мать давно уже не жива', 'я с тебя одуреваю блять', 'батю найди потом пизди', 'выйди из чата и не возвращайся блять', 'ливай с позором блять', 'уходи нахуй и еблище закрыть не забудь за собой', 'пойди маму свою обними покуда мозг совсем не сгнил', 'понюхай яйца мне нахуй', 'купи себе презерватив и не размножайся', 'прекращай бредить нахуй пока я тебе рот членом не заткнул', 'заткни просто еблет и всё нахуй', 'закрой ебало своё и не еби мозги', 'снимись в видосе брайн мапса хахаха']
 mat = ['блять', 'сука', 'нахуй']
   
-#client = TelegramClient(
+client = TelegramClient(
     'Edge Sesh', os.getenv('API_ID'), os.getenv('API_HASH'),
     system_version = os.getenv('SYSTEM_VERSION'),
     device_model = os.getenv('DEVICE_MODEL'),
     app_version = os.getenv('APP_VERSION'),
     local_addr = ('0.0.0.0', 19133)).start(bot_token=os.getenv('TOKEN'))
 
-@client.on(events.NewMessage(pattern='Ботис (.+)'))
+@client.on(events.NewMessage(pattern='Борис (.+)'))
 async def _mainline(event):
     
     global database
@@ -65,6 +65,7 @@ async def _mainline(event):
                 await post_id.reply(f'{choice(prefix)}, {choice(adressing)} {pref1}, {pref2} {osk1}, {choice(postfix)}, {osk2} {choice(mat)}')
             else:
                 await event.respond(f'{choice(prefix)}, {choice(adressing)} {pref1}, {pref2} {osk1}, {choice(postfix)}, {osk2} {choice(mat)}')
+            print('Done!')
             
     #if event.chat_id == TltFlood or event.chat_id == TestingChat:
     if True:
@@ -74,6 +75,8 @@ async def _mainline(event):
                 payout = randint(10, 99)
                 user = await event.get_sender()
                 account = database.find_one({'userId': str(event.sender_id)})
+                print(event.date)
+                print(datetime.strptime(f'{account["lastWork"]}+00:00', '%Y-%m-%d %H:%M:%S%z'))
                 if account:
                     if event.date - datetime.strptime(f'{account["lastWork"]}+00:00', '%Y-%m-%d %H:%M:%S%z') >= timedelta(minutes = 10):
                         await event.respond(f'Так уж и быть, {user.first_name}, ради тебя - сгоняю.\n> Вы заработали {payout} скамкоинов!', parse_mode='markdown')
@@ -88,6 +91,7 @@ async def _mainline(event):
                         'lastWork': event.date
                         })
                     await event.respond(f'Так уж и быть, {user.first_name}, ради тебя - сгоняю.\n> Вы заработали {payout} скамкоинов!', parse_mode='markdown')
+                
                 
             # Пасхалка
             else:
@@ -113,7 +117,6 @@ async def _mainline(event):
 
 client.start()
 client.run_until_disconnected()
-
 
 
 
