@@ -76,8 +76,6 @@ async def _mainline(event):
                 payout = randint(44, 228)
                 user = await event.get_sender()
                 account = database.find_one({'userId': str(event.sender_id)})
-                print(event.date)
-                print(datetime.strptime(f'{account["lastWork"]}+00:00', '%Y-%m-%d %H:%M:%S%z'))
                 if account:
                     if event.date - datetime.strptime(f'{account["lastWork"]}+00:00', '%Y-%m-%d %H:%M:%S%z') >= timedelta(minutes = 10):
                         await event.respond(f'Так уж и быть, {user.first_name}, ради тебя - сгоняю.\n> Вы заработали {payout} скамкоинов!', parse_mode='markdown')
@@ -161,6 +159,7 @@ async def _mainline(event):
 
 client.start()
 client.run_until_disconnected()
+
 
 
 
