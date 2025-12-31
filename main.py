@@ -73,7 +73,7 @@ async def _mainline(event):
             
         if 'иди на работу' in event.raw_text:
             if randint(1, 100) != 42:
-                payout = randint(10, 99)
+                payout = randint(42, 228)
                 user = await event.get_sender()
                 account = database.find_one({'userId': str(event.sender_id)})
                 print(event.date)
@@ -136,7 +136,7 @@ async def _mainline(event):
                 if account["scamCoins"] < 500:
                     await event.reply(f'У вас недостаточно скамкоинов для крутки!\nНеобходимо 500 скамкоинов, а у вас всего лишь {account["scamCoins"]}\n\nНищета ебаная {choice(mat)}...')
                 else:
-                    char_id = random.choices([1, 2, 3, 4, 5], weights = [50, 50, 20, 10, 2], k = 1)[0]
+                    char_id = random.choices([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], weights = [25, 25, 20, 10, 5, 10, 10, 10, 10, 10, 40, 40, 40, 40, 40, 35], k = 1)[0]
                     char_data = database.find_one({'chID': char_id})
                     database.update_one(account, {'$addToSet': {'characters': char_id}, '$set': {'scamCoins': account['scamCoins'] - 500}})
                     await event.reply(f'Вы получили...\n\nПерсонажа по имени {char_data["chName"]}!', file = InputPhoto(char_data["chImageID"], char_data["chAccessHash"], char_data["fileRef"]))
@@ -161,5 +161,6 @@ async def _mainline(event):
 
 client.start()
 client.run_until_disconnected()
+
 
 
