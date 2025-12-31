@@ -125,7 +125,7 @@ async def _mainline(event):
                 database.insert_one({
                     'userId': str(event.sender_id),
                     'scamCoins': 0,
-                    'lastWork': '2024-07-03 22:34:09+00:00'
+                    'lastWork': datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z')
                 })
                 await event.reply('Ваш баланс: 0 скамкоинов!')
                 
@@ -144,7 +144,7 @@ async def _mainline(event):
                 database.insert_one({
                     'userId': str(event.sender_id),
                     'scamCoins': 0,
-                    'lastWork': '2024-07-03 22:34:09+00:00'
+                    'lastWork': datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z')
                 })
                 await event.reply(f'У вас недостаточно скамкоинов для крутки!\nНеобходимо 500 скамкоинов, а у вас всего лишь 0\n\nНищета ебаная {choice(mat)}...')
                 
@@ -161,6 +161,7 @@ async def _mainline(event):
 
 client.start()
 client.run_until_disconnected()
+
 
 
 
