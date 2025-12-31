@@ -119,18 +119,34 @@ async def _mainline(event):
     if True:
         if 'баланс' in event.raw_text or 'балик' in event.raw_text:
             account = database.find_one({'userId': str(event.sender_id)})
-            await event.reply(f'Ваш баланс: {account["scamCoins"]} скамкоинов!')
+            if account:
+                await event.reply(f'Ваш баланс: {account["scamCoins"]} скамкоинов!')
+            else:
+                database.insert_one({
+                    'userId': str(event.sender_id),
+                    'scamCoins': 0,
+                    'lastWork': '2024-07-03 22:34:09+00:00'
+                })
+                await event.reply('Ваш баланс: 0 скамкоинов!')
                 
     if True:
         if 'крутка' in event.raw_text or 'гача' in event.raw_text:
             account = database.find_one({'userId': str(event.sender_id)})
-            if account["scamCoins"] < 500:
-                await event.reply(f'У вас недостаточно скамкоинов для крутки!\nНеобходимо 500 скамкоинов, а у вас всего лишь {account["scamCoins"]}\n\nНищета ебаная {choice(mat)}...')
+            if account:
+                if account["scamCoins"] < 500:
+                    await event.reply(f'У вас недостаточно скамкоинов для крутки!\nНеобходимо 500 скамкоинов, а у вас всего лишь {account["scamCoins"]}\n\nНищета ебаная {choice(mat)}...')
+                else:
+                    char_id = random.choices([1, 2, 3, 4, 5], weights = [50, 50, 20, 10, 2], k = 1)[0]
+                    char_data = database.find_one({'chID': char_id})
+                    database.update_one(account, {'$addToSet': {'characters': char_id}, '$set': {'scamCoins': account['scamCoins'] - 500}})
+                    await event.reply(f'Вы получили...\n\nПерсонажа по имени {char_data["chName"]}!', file = InputPhoto(char_data["chImageID"], char_data["chAccessHash"], char_data["fileRef"]))
             else:
-                char_id = random.choices([1, 2, 3, 4, 5], weights = [50, 50, 20, 10, 2], k = 1)[0]
-                char_data = database.find_one({'chID': char_id})
-                database.update_one(account, {'$addToSet': {'characters': char_id}, '$set': {'scamCoins': account['scamCoins'] - 500}})
-                await event.reply(f'Вы получили...\n\nПерсонажа по имени {char_data["chName"]}!', file = InputPhoto(char_data["chImageID"], char_data["chAccessHash"], char_data["fileRef"]))
+                database.insert_one({
+                    'userId': str(event.sender_id),
+                    'scamCoins': 0,
+                    'lastWork': '2024-07-03 22:34:09+00:00'
+                })
+                await event.reply(f'У вас недостаточно скамкоинов для крутки!\nНеобходимо 500 скамкоинов, а у вас всего лишь 0\n\nНищета ебаная {choice(mat)}...')
                 
     if True:
         if 'добавить персонажа 1133' in event.raw_text:
@@ -145,4 +161,5 @@ async def _mainline(event):
 
 client.start()
 client.run_until_disconnected()
+
 
