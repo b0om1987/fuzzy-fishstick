@@ -6,6 +6,7 @@ from random import randint, choice
 from datetime import datetime, timedelta, timezone
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
+from telethon.tl.types import InputPhoto
 
 global database
 
@@ -143,3 +144,4 @@ async def _mainline(event):
 
 client.start()
 client.run_until_disconnected()
+
