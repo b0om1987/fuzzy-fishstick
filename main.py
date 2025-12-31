@@ -129,7 +129,7 @@ async def _mainline(event):
                 char_id = random.choices([1, 2, 3, 4, 5], weights = [50, 50, 20, 10, 2], k = 1)[0]
                 char_data = database.find_one({'chID': char_id})
                 database.update_one(account, {'$addToSet': {'characters': char_id}})
-                await event.reply(f'Вы получили...\n\nПерсонажа по имени {char_data["chName"]}!', file = char_data["chImageID"])
+                await event.reply(f'Вы получили...\n\nПерсонажа по имени {char_data["chName"]}!', file = InputPhoto(char_data["chImageID"], char_data["chAccessHash"]))
                 
     if True:
         if 'добавить персонажа 1133' in event.raw_text:
@@ -137,10 +137,9 @@ async def _mainline(event):
             database.insert_one({
                 'chID': int(chID[1]),
                 'chName': chID[2],
-                'chImageID': event.message.photo.id
+                'chImageID': event.message.photo.id,
+                'chAccessHash': event.message.photo.access_hash
                 })
 
 client.start()
 client.run_until_disconnected()
-
-
