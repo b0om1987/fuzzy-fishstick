@@ -129,7 +129,7 @@ async def _mainline(event):
             else:
                 char_id = random.choices([1, 2, 3, 4, 5], weights = [50, 50, 20, 10, 2], k = 1)[0]
                 char_data = database.find_one({'chID': char_id})
-                database.update_one(account, {'$addToSet': {'characters': char_id}})
+                database.update_one(account, {'$addToSet': {'characters': char_id}, '$set': {'scamCoins': account['scamCoins'] - 500}})
                 await event.reply(f'Вы получили...\n\nПерсонажа по имени {char_data["chName"]}!', file = InputPhoto(char_data["chImageID"], char_data["chAccessHash"], char_data["fileRef"]))
                 
     if True:
@@ -145,3 +145,4 @@ async def _mainline(event):
 
 client.start()
 client.run_until_disconnected()
+
