@@ -115,6 +115,32 @@ async def _mainline(event):
                     
                 await event.reply(f'{choice(prefix)}, ты мне ещё командовать будешь, {osk1} {pref1}, {pref2} {osk2} {choice(mat)}? Рыло вальни, {choice(postfix)}, {pref3} {osk3} {choice(mat)}')
 
+    if True:
+        if 'баланс' in event.raw_text or 'балик' in event.raw_text:
+            account = database.find_one({'userId': str(event.sender_id)})
+            await event.reply(f'Ваш баланс: {account["scamCoins"]} скамкоинов!')
+                
+    if True:
+        if 'крутка' in event.raw_text or 'гача' in event.raw_text:
+            account = database.find_one({'userId': str(event.sender_id)})
+            if account["scamCoins"] < 500:
+                await event.reply(f'У вас недостаточно скамкоинов для крутки!\nНеобходимо 500 скамкоинов, а у вас всего лишь {account["scamCoins"]}\n\nНищета ебаная {choice(mat)}...')
+            else:
+                char_id = random.choices([1, 2, 3, 4, 5], weights = [50, 50, 20, 10, 2], k = 1)[0]
+                char_data = database.find_one({'chID': char_id})
+                database.update_one(account, {'$addToSet': {'characters': char_id}})
+                await event.reply(f'Вы получили...\n\nПерсонажа по имени {char_data["chName"]}!', file = char_data["chImageID"])
+                
+    if True:
+        if 'добавить персонажа 1133' in event.raw_text:
+            chID = event.raw_text.split('\n')
+            database.insert_one({
+                'chID': int(chID[1]),
+                'chName': chID[2],
+                'chImageID': event.message.photo.id
+                })
+
 client.start()
 client.run_until_disconnected()
+
 
