@@ -73,7 +73,7 @@ async def _mainline(event):
             
         if 'иди на работу' in event.raw_text:
             if randint(1, 100) != 42:
-                payout = randint(42, 228)
+                payout = randint(44, 228)
                 user = await event.get_sender()
                 account = database.find_one({'userId': str(event.sender_id)})
                 print(event.date)
@@ -161,6 +161,7 @@ async def _mainline(event):
 
 client.start()
 client.run_until_disconnected()
+
 
 
 
