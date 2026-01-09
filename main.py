@@ -127,7 +127,7 @@ async def _mainline(event):
                 })
                 await event.reply('Ваш баланс: 0 скамкоинов!')
                 
-    if True:
+    if False:
         if 'крутка' in event.raw_text or 'гача' in event.raw_text:
             account = database.find_one({'userId': str(event.sender_id)})
             if account:
@@ -157,7 +157,7 @@ async def _mainline(event):
                 'fileRef': event.message.photo.file_reference
                 })
 
-    if True:
+    if randint(1, 10) == 7:
         if 'трахнуть чер' in event.raw_text:
             payout = randint(1, 14)
             user = await event.get_sender()
@@ -176,6 +176,7 @@ async def _mainline(event):
 
 client.start()
 client.run_until_disconnected()
+
 
 
 
