@@ -157,25 +157,13 @@ async def _mainline(event):
                 'fileRef': event.message.photo.file_reference
                 })
 
-    if randint(1, 10) == 7:
-        if 'трахнуть чер' in event.raw_text:
-            payout = randint(1, 14)
-            user = await event.get_sender()
-            account = database.find_one({'userId': str(event.sender_id)})
-            if account:
-                await event.respond(f'Так уж и быть, {user.first_name}, ради тебя - трахну ёбаную чер {choice(mat)} хахахах\n> Вы заработали {payout} скамкоинов за то что вы хороший человек!', parse_mode='markdown')
-                database.update_one(account, {'$inc': {'scamCoins': payout}})
-            else:
-                database.insert_one({
-                    'userId': str(event.sender_id),
-                    'scamCoins': payout,
-                    'lastWork': event.date
-                    })
-                await event.respond(f'Так уж и быть, {user.first_name}, ради тебя - трахну ёбаную чер {choice(mat)}.\n> Вы заработали {payout} скамкоинов за то что вы хороший человек!', parse_mode='markdown')
+    if 'порно' in event.raw_text:
+        await event.reply(f'весело задорно хули я ещё могу сказать {choice(mat)}')
             
 
 client.start()
 client.run_until_disconnected()
+
 
 
 
