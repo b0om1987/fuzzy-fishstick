@@ -199,11 +199,17 @@ async def _mainline(event):
                 })
 
     if 'порно' in event.raw_text:
-        await event.reply(f'весело задорно хули я ещё могу сказать {choice(mat)}')
+        keyboard = [
+            Button.inline("First option", b"1"),
+            Button.inline("Second option", b"2"),
+            Button.inline("Third option", b"3")
+        ]
+        await event.respond(f'весело задорно хули я ещё могу сказать {choice(mat)}', buttons=keyboard)
             
 
 client.start()
 client.run_until_disconnected()
+
 
 
 
