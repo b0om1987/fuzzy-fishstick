@@ -240,7 +240,7 @@ async def _mainline(event):
                         })
                         await event.reply('Регистрация прошла успешно!')
                     else:
-                        userDatabase.insert_one({
+                        userDatabase.insert_one(account, {
                             'userId': str(event.sender_id),
                             'scamCoins': 0,
                             'lastWork': datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z'),
@@ -251,6 +251,7 @@ async def _mainline(event):
 
 client.start()
 client.run_until_disconnected()
+
 
 
 
