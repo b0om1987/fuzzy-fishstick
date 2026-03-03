@@ -211,7 +211,7 @@ async def _mainline(event):
         account = userDatabase.find_one({'userId': str(event.sender_id)})
         if account:
             if "loveIntrest" in account:
-                
+                await event.reply('placeholder')
             else:
                 await event.reply('Любовный интерес не найден! Выберите его в личных сообщениях бота с помощью комманды "любовь".')
         else:
@@ -289,6 +289,7 @@ async def _mainline(event):
 
 client.start()
 client.run_until_disconnected()
+
 
 
 
