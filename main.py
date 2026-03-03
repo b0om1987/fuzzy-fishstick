@@ -189,7 +189,7 @@ async def _mainline(event):
                 })
                 await event.reply(f'У вас недостаточно скамкоинов для крутки!\nНеобходимо 500 скамкоинов, а у вас всего лишь 0\n\nНищета ебаная {choice(mat)}...')
                 
-    if isinstance(event.chat, events.ChatType):
+    if event.is_private:
         if 'добавить персонажа 1133' in event.raw_text:
             chID = event.raw_text.split('\n')
             database.insert_one({
@@ -199,8 +199,7 @@ async def _mainline(event):
                 'chAccessHash': event.message.photo.access_hash,
                 'fileRef': event.message.photo.file_reference
                 })
-            
-    if isinstance(event.chat, events.ChatType):
+    if event.is_private:
         if 'порно' in event.raw_text:
             keyboard = [
                 [Button.inline("First option", b"1")],
@@ -212,5 +211,6 @@ async def _mainline(event):
 
 client.start()
 client.run_until_disconnected()
+
 
 
