@@ -192,22 +192,59 @@ async def _mainline(event):
     if event.is_private:
         if 'добавить персонажа 1133' in event.raw_text:
             chID = event.raw_text.split('\n')
-            database.insert_one({
+            characterDatabase.insert_one({
                 'chID': int(chID[1]),
                 'chName': chID[2],
                 'chImageID': event.message.photo.id,
                 'chAccessHash': event.message.photo.access_hash,
                 'fileRef': event.message.photo.file_reference
                 })
-    if event.is_private:
-        if 'порно' in event.raw_text:
+                  
+    #if event.is_private:
+        if 'свидание' in event.raw_text:
             keyboard = [
                 [Button.inline("First option", b"1")],
                 [Button.inline("Second option", b"2")],
                 [Button.inline("Third option", b"3")]
             ]
             await event.respond(f'весело задорно хули я ещё могу сказать {choice(mat)}', buttons=keyboard)
-            
+
+    if event.is_private:
+        if 'регистрация' in event.raw_text:
+            userData = event.raw_text.split()
+            if len(userData) == 2:
+                event.respond('Чтобы зарегистрировать аккаунт для свиданий, напишите \"регистрация [М/Ж] [Имя]')
+            if len(userData) == 4:
+                if userData[2] != 'Ж' or userData[2] != 'ж' or usedData[2] != 'М' or userData[2] != 'м':
+                    event.respond('ало еблище отформатируй правильно команду мне лень писать адекватный процесс регистрации')
+                    errorHappened = True
+                else:
+                    if userData[2] == 'Ж' or userData[2] == 'ж':
+                        isuserMale = False
+                    if usedData[2] == 'М' or userData[2] == 'м':
+                        isuserMale = True
+                if userData[3].isalpha() and userData[3].istitle() :
+                    userDatingName = userData[3]
+                else:
+                    event.respond('имя должно быть одним словом и с большой буквы капец ты тупица нахуй хахаах учи русский язык мудила')
+                    errorHappened = True
+                if errorHappened:
+                    event.respond('ну короче регистрация не прошла, попробуй снова я хз, я обдолбан в нулину и не могу нормальную регистрацию сделать без утечек памяти и ошубок')
+                else:
+                    account = userDatabase.find_one({'userId': str(event.sender_id)})
+                    if account:
+                        userDatabase.update_one({
+                            '$set': {"genderMale": isuserMale},
+                            '$set': {"userName": userDatingName}
+                        })
+                    else:
+                        userDatabase.insert_one({
+                            'userId': str(event.sender_id),
+                            'scamCoins': 0,
+                            'lastWork': datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z'),
+                            'genderMale': isuserMale,
+                            'userName': userDatingName
+                        })
 
 client.start()
 client.run_until_disconnected()
