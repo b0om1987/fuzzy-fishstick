@@ -215,6 +215,7 @@ async def _mainline(event):
             if len(userData) == 2:
                 await event.respond('Чтобы зарегистрировать аккаунт для свиданий, напишите \"регистрация [М/Ж] [Имя]')
             if len(userData) == 4:
+                      errorHappened = False
                 if userData[2] != 'Ж' and userData[2] != 'ж' and userData[2] != 'М' and userData[2] != 'м':
                     await event.respond('ало еблище отформатируй правильно команду мне лень писать адекватный процесс регистрации')
                     errorHappened = True
@@ -237,6 +238,7 @@ async def _mainline(event):
                             '$set': {"genderMale": isuserMale},
                             '$set': {"userName": userDatingName}
                         })
+                        await event.reply('Регистрация прошла успешно!')
                     else:
                         userDatabase.insert_one({
                             'userId': str(event.sender_id),
@@ -245,9 +247,11 @@ async def _mainline(event):
                             'genderMale': isuserMale,
                             'userName': userDatingName
                         })
+                        await event.reply('Регистрация прошла успешно!')
 
 client.start()
 client.run_until_disconnected()
+
 
 
 
