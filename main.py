@@ -235,8 +235,10 @@ async def _mainline(event):
                     account = userDatabase.find_one({'userId': str(event.sender_id)})
                     if account:
                         userDatabase.update_one({
-                            '$set': {"genderMale": isuserMale},
-                            '$set': {"userName": userDatingName}
+                            '$set': {
+                                "genderMale": isuserMale,
+                                "userName": userDatingName
+                                }
                         })
                         await event.reply('Регистрация прошла успешно!')
                     else:
@@ -251,6 +253,7 @@ async def _mainline(event):
 
 client.start()
 client.run_until_disconnected()
+
 
 
 
