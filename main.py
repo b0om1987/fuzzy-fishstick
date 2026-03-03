@@ -207,15 +207,45 @@ async def _mainline(event):
                 })
                   
     #if event.is_private:
-        if 'свидание' in event.raw_text:
-            keyboard = [
-                [Button.inline("First option", b"1")],
-                [Button.inline("Second option", b"2")],
-                [Button.inline("Third option", b"3")]
-            ]
-            await event.respond(f'весело задорно хули я ещё могу сказать {choice(mat)}', buttons=keyboard)
+    if 'свидание' in event.raw_text:
+        account = userDatabase.find_one({'userId': str(event.sender_id)})
+        if account:
+            if "loveIntrest" in account:
+                
+            else:
+                await event.reply('Любовный интерес не найден! Выберите его в личных сообщениях бота с помощью комманды "любовь".')
+        else:
+            await event.reply('Аккаунт не найден! Зарегистрируйтесь в личных сообщениях бота с помощью комманды "регистрация".')
+        
+        keyboard = [
+            [Button.inline("First option", b"1")],
+            [Button.inline("Second option", b"2")],
+            [Button.inline("Third option", b"3")]
+        ]
+        await event.respond(f'весело задорно хули я ещё могу сказать {choice(mat)}', buttons=keyboard)
+        
 
     if event.is_private:
+
+        if 'любовь' in event.raw_text:
+            account = userDatabase.find_one({'userId': str(event.sender_id)})
+            keyboard = []
+            if 13 in account["characters"]:
+                keyboard.append([Button.inline("Zero_One", b"13")])
+            if 12 in account["characters"]:
+                keyboard.append([Button.inline("Rust", b"12")])
+            if 11 in account["characters"]:
+                keyboard.append([Button.inline("Doc", b"11")])
+            if 15 in account["characters"]:
+                keyboard.append([Button.inline("Armstrong", b"15")])
+            if 14 in account["characters"]:
+                keyboard.append([Button.inline("Tesla", b"14")])
+
+            if len(keyboard) != 0:
+                await event.respond(f'Выберите персонажа с которым вы хотите встречаться!', buttons=keyboard)
+            else:
+                await event.respond('У вас нет персонажей с которыми можно было бы встречаться! Время пойти в казик!!!')
+        
         if 'регистрация' in event.raw_text:
             userData = event.raw_text.split()
             if len(userData) == 2:
@@ -259,6 +289,7 @@ async def _mainline(event):
 
 client.start()
 client.run_until_disconnected()
+
 
 
 
