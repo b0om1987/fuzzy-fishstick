@@ -122,7 +122,10 @@ async def _mainline(event):
                 if account:
                     if event.date - datetime.strptime(f'{account["lastWork"]}+00:00', '%Y-%m-%d %H:%M:%S%z') >= timedelta(minutes = 10):
                         await event.respond(choice(workwords).replace("{user.first_name}", user.first_name) + f"\n> Вы заработали {payout} скамкоинов!", parse_mode='markdown')
-                        userDatabase.update_one(account, {'$inc': {'scamCoins': payout}, '$set': {'lastWork': event.date}})
+                        userDatabase.update_one(account, {
+                            '$inc': {'scamCoins': payout},
+                            '$set': {'lastWork': event.date}
+                        })
                         
                     else:
                         await event.respond(f'{user.first_name}, ну ты {choice(oskmain)} {choice(oskprefix)}, дай отдохнуть {choice(mat)}... Заебался я в край {choice(mat)}')
@@ -177,9 +180,12 @@ async def _mainline(event):
                 if account["scamCoins"] < 500:
                     await event.reply(f'У вас недостаточно скамкоинов для крутки!\nНеобходимо 500 скамкоинов, а у вас всего лишь {account["scamCoins"]}\n\nНищета ебаная {choice(mat)}...')
                 else:
-                    char_id = random.choices([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], weights = [25, 25, 20, 10, 5, 10, 10, 10, 10, 10, 40, 40, 40, 40, 40, 35], k = 1)[0]
+                    char_id = random.choices([10, 11, 12, 13, 14, 15], weights = [20, 40, 30, 20, 30], k = 1)[0]
                     char_data = userDatabase.find_one({'chID': char_id})
-                    userDatabase.update_one(account, {'$addToSet': {'characters': char_id}, '$set': {'scamCoins': account['scamCoins'] - 500}})
+                    userDatabase.update_one(account, {
+                        '$addToSet': {'characters': char_id},
+                        '$set': {'scamCoins': account['scamCoins'] - 500}
+                    })
                     await event.reply(f'Вы получили...\n\nПерсонажа по имени {char_data["chName"]}!', file = InputPhoto(char_data["chImageID"], char_data["chAccessHash"], char_data["fileRef"]))
             else:
                 userDatabase.insert_one({
@@ -234,15 +240,15 @@ async def _mainline(event):
                 else:
                     account = userDatabase.find_one({'userId': str(event.sender_id)})
                     if account:
-                        userDatabase.update_one({
-                            '$set': {
+                        userDatabase.update_one(account, {'$set':
+                                {
                                 "genderMale": isuserMale,
                                 "userName": userDatingName
                                 }
                         })
                         await event.reply('Регистрация прошла успешно!')
                     else:
-                        userDatabase.insert_one(account, {
+                        userDatabase.insert_one({
                             'userId': str(event.sender_id),
                             'scamCoins': 0,
                             'lastWork': datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z'),
@@ -253,6 +259,7 @@ async def _mainline(event):
 
 client.start()
 client.run_until_disconnected()
+
 
 
 
