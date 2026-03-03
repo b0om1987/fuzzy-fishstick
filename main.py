@@ -221,7 +221,7 @@ async def _mainline(event):
                 else:
                     if userData[2] == 'Ж' or userData[2] == 'ж':
                         isuserMale = False
-                    if usedData[2] == 'М' or userData[2] == 'м':
+                    if userData[2] == 'М' or userData[2] == 'м':
                         isuserMale = True
                 if userData[3].isalpha() and userData[3].istitle() :
                     userDatingName = userData[3]
@@ -248,6 +248,7 @@ async def _mainline(event):
 
 client.start()
 client.run_until_disconnected()
+
 
 
 
