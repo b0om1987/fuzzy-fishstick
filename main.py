@@ -215,7 +215,7 @@ async def _mainline(event):
             if len(userData) == 2:
                 await event.respond('Чтобы зарегистрировать аккаунт для свиданий, напишите \"регистрация [М/Ж] [Имя]')
             if len(userData) == 4:
-                      errorHappened = False
+                errorHappened = False
                 if userData[2] != 'Ж' and userData[2] != 'ж' and userData[2] != 'М' and userData[2] != 'м':
                     await event.respond('ало еблище отформатируй правильно команду мне лень писать адекватный процесс регистрации')
                     errorHappened = True
@@ -251,6 +251,7 @@ async def _mainline(event):
 
 client.start()
 client.run_until_disconnected()
+
 
 
 
