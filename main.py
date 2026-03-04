@@ -303,19 +303,19 @@ async def callback(event):
     if str(event.sender_id) == str(event.data)[4:-1]:
         account = userDatabase.find_one({'userId': str(event.sender_id)})
         
-        if str(event.data[2:4]) == '11':
+        if str(event.data)[2:4] == '11':
             userDatabase.update_one(account, {'$set': {"loveIntrest": 11}})
             await event.answer('Вы успешно выбрали Дока!')
-        if str(event.data[2:4]) == '12':
+        if str(event.data)[2:4] == '12':
             userDatabase.update_one(account, {'$set': {"loveIntrest": 12}})
             await event.answer('вы выбрали раста')
-        if str(event.data[2:4]) == '13':
+        if str(event.data)[2:4] == '13':
             userDatabase.update_one(account, {'$set': {"loveIntrest": 13}})
             await event.answer('Вы успешно выбрали Зирована!')
-        if str(event.data[2:4]) == '14':
+        if str(event.data)[2:4] == '14':
             userDatabase.update_one(account, {'$set': {"loveIntrest": 14}})
             await event.answer('Вы успешно выбрали Теслу!')
-        if str(event.data[2:4]) == '15':
+        if str(event.data)[2:4] == '15':
             userDatabase.update_one(account, {'$set': {"loveIntrest": 15}})
             await event.answer('Вы успешно выбрали Армстронга!')
     else:
@@ -323,6 +323,7 @@ async def callback(event):
 
 client.start()
 client.run_until_disconnected()
+
 
 
 
