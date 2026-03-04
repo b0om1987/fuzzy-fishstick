@@ -297,7 +297,7 @@ async def _mainline(event):
                         })
                         await event.reply('Регистрация прошла успешно!')
 
-@bot.on(events.CallbackQuery())
+@client.on(events.CallbackQuery())
 async def callback(event):
     if str(event.sender_id) == str(event.data[2:]):
         account = userDatabase.find_one({'userId': str(event.sender_id)})
@@ -322,4 +322,5 @@ async def callback(event):
 
 client.start()
 client.run_until_disconnected()
+
 
