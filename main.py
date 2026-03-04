@@ -231,15 +231,25 @@ async def _mainline(event):
             account = userDatabase.find_one({'userId': str(event.sender_id)})
             keyboard = []
             if 13 in account["characters"]:
-                keyboard.append([Button.inline("Zero_One", b"13")])
+                answerString = '13' + str(event.sender_id)
+                answerString = answerString.encode()
+                keyboard.append([Button.inline("Zero_One", answerString)])
             if 12 in account["characters"]:
-                keyboard.append([Button.inline("Rust", b"12")])
+                answerString = '12' + str(event.sender_id)
+                answerString = answerString.encode()
+                keyboard.append([Button.inline("Rust", answerString)])
             if 11 in account["characters"]:
-                keyboard.append([Button.inline("Doc", b"11")])
+                answerString = '11' + str(event.sender_id)
+                answerString = answerString.encode()
+                keyboard.append([Button.inline("Doc", answerString)])
             if 15 in account["characters"]:
-                keyboard.append([Button.inline("Armstrong", b"15")])
+                answerString = '15' + str(event.sender_id)
+                answerString = answerString.encode()
+                keyboard.append([Button.inline("Armstrong", answerString)])
             if 14 in account["characters"]:
-                keyboard.append([Button.inline("Tesla", b"14")])
+                answerString = '14' + str(event.sender_id)
+                answerString = answerString.encode()
+                keyboard.append([Button.inline("Tesla", answerString)])
 
             if len(keyboard) != 0:
                 await event.respond(f'Выберите персонажа с которым вы хотите встречаться!', buttons=keyboard)
@@ -287,8 +297,25 @@ async def _mainline(event):
                         })
                         await event.reply('Регистрация прошла успешно!')
 
+@bot.on(events.CallbackQuery())
+async def callback(event):
+    if str(event.sender_id) == str(event.data[2:]):
+        if event.data[:1] == b'11':
+            await event.answer('Вы успешно выбрали Дока!')
+        if event.data[:1] == b'12':
+            await event.answer('вы выбрали раста')
+        if event.data[:1] == b'13':
+            await event.answer('Вы успешно выбрали Зирована!')
+        if event.data[:1] == b'14':
+            await event.answer('Вы успешно выбрали Теслу!')
+        if event.data[:1] == 'b15':
+            await event.answer('Вы успешно выбрали Армстронга!')
+    else:
+        await event.answer('это не твоя кнопка ебло утиное блять')
+
 client.start()
 client.run_until_disconnected()
+
 
 
 
