@@ -299,9 +299,8 @@ async def _mainline(event):
 
 @client.on(events.CallbackQuery())
 async def callback(event):
-    print(str(event.data[2:]))
-    print(str(event.sender_id))
-    if str(event.sender_id) == str(event.data[2:]):
+    
+    if str(event.sender_id).encode() == str(event.data[2:]):
         account = userDatabase.find_one({'userId': str(event.sender_id)})
         
         if event.data[:1] == b'11':
@@ -324,7 +323,6 @@ async def callback(event):
 
 client.start()
 client.run_until_disconnected()
-
 
 
 
