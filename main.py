@@ -300,33 +300,26 @@ async def _mainline(event):
 @bot.on(events.CallbackQuery())
 async def callback(event):
     if str(event.sender_id) == str(event.data[2:]):
+        account = userDatabase.find_one({'userId': str(event.sender_id)})
+        
         if event.data[:1] == b'11':
+            userDatabase.update_one(account, {'$set': {"loveIntrest": 11}})
             await event.answer('Вы успешно выбрали Дока!')
         if event.data[:1] == b'12':
+            userDatabase.update_one(account, {'$set': {"loveIntrest": 12}})
             await event.answer('вы выбрали раста')
         if event.data[:1] == b'13':
+            userDatabase.update_one(account, {'$set': {"loveIntrest": 13}})
             await event.answer('Вы успешно выбрали Зирована!')
         if event.data[:1] == b'14':
+            userDatabase.update_one(account, {'$set': {"loveIntrest": 14}})
             await event.answer('Вы успешно выбрали Теслу!')
         if event.data[:1] == 'b15':
+            userDatabase.update_one(account, {'$set': {"loveIntrest": 15}})
             await event.answer('Вы успешно выбрали Армстронга!')
     else:
         await event.answer('это не твоя кнопка ебло утиное блять')
 
 client.start()
 client.run_until_disconnected()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
