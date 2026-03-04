@@ -212,7 +212,11 @@ async def _mainline(event):
         if account:
             if "loveIntrest" in account:
                 storyCluster = storyDatabase.find_one({"chId": account["loveIntrest"]["chId"]})
-                await event.reply(str(storyCluster[f'Date {randint(1, 20)}']))
+                #await event.reply(str(storyCluster[f'Date {randint(1, 20)}']))
+                keyboard = []
+                buttonData = 'a' + str(Value) + 'z' + str(event.sender_id)
+                buttonData = buttonData.encode()
+                keyboard.append([Button.inline(f"{storyCluster['Option 1']['Value']}", b"")])
             else:
                 await event.reply('Любовный интерес не найден! Выберите его в личных сообщениях бота с помощью комманды "любовь".')
         else:
@@ -232,23 +236,23 @@ async def _mainline(event):
             account = userDatabase.find_one({'userId': str(event.sender_id)})
             keyboard = []
             if 13 in account["characters"]:
-                answerString = '13' + str(event.sender_id)
+                answerString = 'l13' + str(event.sender_id)
                 answerString = answerString.encode()
                 keyboard.append([Button.inline("Zero_One", answerString)])
             if 12 in account["characters"]:
-                answerString = '12' + str(event.sender_id)
+                answerString = 'l12' + str(event.sender_id)
                 answerString = answerString.encode()
                 keyboard.append([Button.inline("Rust", answerString)])
             if 11 in account["characters"]:
-                answerString = '11' + str(event.sender_id)
+                answerString = 'l11' + str(event.sender_id)
                 answerString = answerString.encode()
                 keyboard.append([Button.inline("Doc", answerString)])
             if 15 in account["characters"]:
-                answerString = '15' + str(event.sender_id)
+                answerString = 'l15' + str(event.sender_id)
                 answerString = answerString.encode()
                 keyboard.append([Button.inline("Armstrong", answerString)])
             if 14 in account["characters"]:
-                answerString = '14' + str(event.sender_id)
+                answerString = 'l14' + str(event.sender_id)
                 answerString = answerString.encode()
                 keyboard.append([Button.inline("Tesla", answerString)])
 
@@ -300,31 +304,33 @@ async def _mainline(event):
 
 @client.on(events.CallbackQuery())
 async def callback(event):
-    
-    if str(event.sender_id) == str(event.data)[4:-1]:
-        account = userDatabase.find_one({'userId': str(event.sender_id)})
-        if not ("loveIntrest" in account):
-            if str(event.data)[2:4] == '11':
-                userDatabase.update_one(account, {'$set': {"loveIntrest": {'chId': 11, 'affection': 0}}})
-                await event.answer('Вы успешно выбрали Дока!')
-            if str(event.data)[2:4] == '12':
-                userDatabase.update_one(account, {'$set': {"loveIntrest": {'chId': 12, 'affection': 0}}})
-                await event.answer('вы выбрали раста')
-            if str(event.data)[2:4] == '13':
-                userDatabase.update_one(account, {'$set': {"loveIntrest": {'chId': 13, 'affection': 0}}})
-                await event.answer('Вы успешно выбрали Зирована!')
-            if str(event.data)[2:4] == '14':
-                userDatabase.update_one(account, {'$set': {"loveIntrest": {'chId': 14, 'affection': 0}}})
-                await event.answer('Вы успешно выбрали Теслу!')
-            if str(event.data)[2:4] == '15':
-                userDatabase.update_one(account, {'$set': {"loveIntrest": {'chId': 15, 'affection': 0}}})
-                await event.answer('Вы успешно выбрали Армстронга!')
+
+    if str(event.data)[2] == 'l':
+        if str(event.sender_id) == str(event.data)[5:-1]:
+            account = userDatabase.find_one({'userId': str(event.sender_id)})
+            if not ("loveIntrest" in account):
+                if str(event.data)[3:5] == '11':
+                    userDatabase.update_one(account, {'$set': {"loveIntrest": {'chId': 11, 'affection': 0}}})
+                    await event.answer('Вы успешно выбрали Дока!')
+                if str(event.data)[3:5] == '12':
+                    userDatabase.update_one(account, {'$set': {"loveIntrest": {'chId': 12, 'affection': 0}}})
+                    await event.answer('вы выбрали раста')
+                if str(event.data)[3:5] == '13':
+                    userDatabase.update_one(account, {'$set': {"loveIntrest": {'chId': 13, 'affection': 0}}})
+                    await event.answer('Вы успешно выбрали Зирована!')
+                if str(event.data)[3:5] == '14':
+                    userDatabase.update_one(account, {'$set': {"loveIntrest": {'chId': 14, 'affection': 0}}})
+                    await event.answer('Вы успешно выбрали Теслу!')
+                if str(event.data)[3:5] == '15':
+                    userDatabase.update_one(account, {'$set': {"loveIntrest": {'chId': 15, 'affection': 0}}})
+                    await event.answer('Вы успешно выбрали Армстронга!')
+            else:
+                await event.answer('К сожалению, вы уже встречаетесь!')
         else:
-            await event.answer('К сожалению, вы уже встречаетесь!')
-    else:
-        await event.answer('это не твоя кнопка ебло утиное блять')
+            await event.answer('это не твоя кнопка ебло утиное блять')
 
 client.start()
 client.run_until_disconnected()
+
 
 
