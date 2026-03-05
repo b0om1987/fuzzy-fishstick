@@ -212,23 +212,34 @@ async def _mainline(event):
         if account:
             if "loveIntrest" in account:
                 storyCluster = storyDatabase.find_one({"chId": account["loveIntrest"]["chId"]})
-                #await event.reply(str(storyCluster[f'Date {randint(1, 20)}']))
+                dateId = randint(1, len(storyCluster) - 1)
+                storyCluster = str(storyCluster[f'Date {dateId}']))
+                keyboardUnmixed = []
+                keyboardUnmixed.append(f"{storyCluster['Option 1']['Value']} скамкоинов")
+                keyboardUnmixed.append(f"{storyCluster['Option 2']['Value']} скамкоинов")
+                keyboardUnmixed.append(f"{storyCluster['Option 3']['Value']} скамкоинов")
+
+                sequence = random.shuffle([0, 1, 2])
                 keyboard = []
-                buttonData = 'a' + str(Value) + 'z' + str(event.sender_id)
+                
+                buttonData = f's{sequence[0] + 1}' + str(storyCluster[f'Option {sequence[0] + 1}']['Value']) + 'n' + str(dateId) + 'z' + str(event.sender_id)
                 buttonData = buttonData.encode()
-                keyboard.append([Button.inline(f"{storyCluster['Option 1']['Value']}", b"")])
+                keyboard.append([Button.inline(f"1. {keyboardUnmixed[sequence[0]]}", buttonData)])
+                buttonData = f's{sequence[1] + 1}' + str(storyCluster[f'Option {sequence[1] + 1}']['Value']) + 'n' + str(dateId) + 'z' + str(event.sender_id)
+                buttonData = buttonData.encode()
+                keyboard.append([Button.inline(f"2. {keyboardUnmixed[sequence[1]]}", buttonData)])
+                buttonData = f's{sequence[2] + 1}' + str(storyCluster[f'Option {sequence[2] + 1}']['Value']) + 'n' + str(dateId) + 'z' + str(event.sender_id)
+                buttonData = buttonData.encode()
+                keyboard.append([Button.inline(f"3. {keyboardUnmixed[sequence[2]]}", buttonData)])
+                
+                await event.reply(f'**{storyCluster["Date name"]}**\n\n{storyCluster["Date description"]}\n\n__1.__ {storyCluster["Option 1"]["description"]}\n\n__2.__ {storyCluster["Option 2"]["description"]}\n\n__3.__ {storyCluster["Option 3"]["description"]}', buttons=keyboard)
+                
             else:
                 await event.reply('Любовный интерес не найден! Выберите его в личных сообщениях бота с помощью комманды "любовь".')
         else:
             await event.reply('Аккаунт не найден! Зарегистрируйтесь в личных сообщениях бота с помощью комманды "регистрация".')
-        
-        keyboard = [
-            [Button.inline("First option", b"1")],
-            [Button.inline("Second option", b"2")],
-            [Button.inline("Third option", b"3")]
-        ]
-        await event.respond(f'весело задорно хули я ещё могу сказать {choice(mat)}', buttons=keyboard)
-        
+
+    
 
     if event.is_private:
 
@@ -328,9 +339,28 @@ async def callback(event):
                 await event.answer('К сожалению, вы уже встречаетесь!')
         else:
             await event.answer('это не твоя кнопка ебло утиное блять')
+            
+        ### Next byte ###
+        
+    if str(event.data)[2] == 's':
+        if str(event.sender_id) == str(event.data)[int(event.data.find("z"))+1:-1]:
+            account = userDatabase.find_one({'userId': str(event.sender_id)})
+            if str(event.data)[4:int(event.data.find("n"))-1] <= account["scamCoins"]:
+                storyCluster = storyDatabase.find_one({"chId": account["loveIntrest"]["chId"]})
+                storyCluster = storyDatabase[f"Date {event.data[int(event.data.find("n"))+1:int(event.data.find("z"))-1]}"]
+                if str(event.data)[3] == '1':
+                    userDatabase.update_one(account, {"$set": {'scamCoins': account['scamCoins'] - int(str(event.data)[4:int(event.data.find("n"))-1])}, {"loveIntrest": {"affection": account['loveIntrest']['affection'] + 1}}})
+                if str(event.data)[3] == '2':
+                    userDatabase.update_one(account, {"$set": {'scamCoins': account['scamCoins'] - int(str(event.data)[4:int(event.data.find("n"))-1])}, {"loveIntrest": {"affection": account['loveIntrest']['affection'] + 1}}})
+                if str(event.data)[3] == '3':
+                    userDatabase.update_one(account, {"$set": {'scamCoins': account['scamCoins'] - int(str(event.data)[4:int(event.data.find("n"))-1])}, {"loveIntrest": {"affection": account['loveIntrest']['affection'] + 1}}})
+        else:
+            await event.answer('это не твоя кнопка ебло утиное блять')
 
 client.start()
 client.run_until_disconnected()
+
+
 
 
 
