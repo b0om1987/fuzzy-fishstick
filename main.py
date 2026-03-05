@@ -213,22 +213,40 @@ async def _mainline(event):
             if "loveIntrest" in account:
                 storyCluster = storyDatabase.find_one({"chId": account["loveIntrest"]["chId"]})
                 #await event.reply(str(storyCluster[f'Date {randint(1, 20)}']))
-                keyboard = []
-                buttonData = 'a' + str(Value) + 'z' + str(event.sender_id)
+                keyboardUnmixed = []
+                
+                buttonData = 's1' + str(Value) + 'n' + str(event.sender_id)
                 buttonData = buttonData.encode()
-                keyboard.append([Button.inline(f"{storyCluster['Option 1']['Value']}", b"")])
+                keyboardUnmixed.append(f"{storyCluster['Option 1']['Value']} скамкоинов")
+
+                buttonData = 's2' + str(Value) + 'n' + str(event.sender_id)
+                buttonData = buttonData.encode()
+                keyboardUnmixed.append(f"{storyCluster['Option 2']['Value']} скамкоинов")
+
+                buttonData = 's3' + str(Value) + 'n' + str(event.sender_id)
+                buttonData = buttonData.encode()
+                keyboardUnmixed.append(f"{storyCluster['Option 3']['Value']} скамкоинов")
+
+                sequence = random.shuffle([0, 1, 2])
+                keyboard = []
+                
+                buttonData = 's1' + str(Value) + 'n' + str(event.sender_id)
+                buttonData = buttonData.encode()
+                keyboard.append([Button.inline(f"1. {keyboardUnmixed[sequence[0]]}", buttonData)])
+                
+                
+                keyboard.append([Button.inline(f"2. {keyboardUnmixed[sequence[1]]}", buttonData)])
+                keyboard.append([Button.inline(f"3. {keyboardUnmixed[sequence[2]]}", buttonData)])
+                
+
+                await event.reply(f'**{storyCluster["Date name"]}**\n\n{storyCluster["Date description"]}')
+                
             else:
                 await event.reply('Любовный интерес не найден! Выберите его в личных сообщениях бота с помощью комманды "любовь".')
         else:
             await event.reply('Аккаунт не найден! Зарегистрируйтесь в личных сообщениях бота с помощью комманды "регистрация".')
-        
-        keyboard = [
-            [Button.inline("First option", b"1")],
-            [Button.inline("Second option", b"2")],
-            [Button.inline("Third option", b"3")]
-        ]
-        await event.respond(f'весело задорно хули я ещё могу сказать {choice(mat)}', buttons=keyboard)
-        
+
+    
 
     if event.is_private:
 
@@ -331,6 +349,7 @@ async def callback(event):
 
 client.start()
 client.run_until_disconnected()
+
 
 
 
