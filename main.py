@@ -172,6 +172,9 @@ async def _mainline(event):
                     'lastWork': datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z')
                 })
                 await event.reply('Ваш баланс: 0 скамкоинов!')
+
+    if 'кто канон пейринг с Растом?' in event.raw_text:
+        await event.reply('Очевидно, что это @VeraKorneplod')
                 
     if False:
         if 'крутка' in event.raw_text or 'гача' in event.raw_text:
@@ -261,8 +264,7 @@ async def _mainline(event):
             else:
                 await event.respond('У вас нет персонажей с которыми можно было бы встречаться! Время пойти в казик!!!')
 
-        if 'кто канон пейринг с Растом?' in event.raw_text:
-            await event.reply('Очевидно, что это @VeraKorneplod')
+        
         
         if 'регистрация' in event.raw_text:
             userData = event.raw_text.split()
