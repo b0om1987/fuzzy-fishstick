@@ -261,7 +261,7 @@ async def _mainline(event):
             else:
                 await event.respond('У вас нет персонажей с которыми можно было бы встречаться! Время пойти в казик!!!')
 
-        if 'кто канон пейринг с Растом?':
+        if 'кто канон пейринг с Растом?' in event.raw_text:
             await event.reply('Очевидно, что это @VeraKorneplod')
         
         if 'регистрация' in event.raw_text:
