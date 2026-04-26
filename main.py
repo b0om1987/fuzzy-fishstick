@@ -372,11 +372,12 @@ async def callback(event):
                     await event.respond(f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]["Result 3"]}")
                     account["loveIntrest"]["affection"] += -3
             else:
-                await event.respond(f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>, у вас недостаточно скамкоинов для этого!")
+                await event.answer("У вас недостаточно скамкоинов для этого действия!")
         else:
-            await event.answer("Exception logged in\n\"fuzzy-fishstick/main.py\": str(event.data)[z+1:i-1] is not equal to userDatabase.find_one({'userId': str(event.sender_id)})")
+            await event.answer("Exception logged in\"fuzzy-fishstick/main.py\":\nstr(event.data)[z+1:i-1] is not equal to userDatabase.find_one({'userId': str(event.sender_id)})")
+            await event.respond(f"{str(event.sender_id)}\n{str(event.data)[z+1:i-1]}")
     else:
-        await event.respond("Exception: z > -1")
+        await event.answer("Exception: z > -1")
 
 client.start()
 client.run_until_disconnected()
