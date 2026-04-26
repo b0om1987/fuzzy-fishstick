@@ -260,6 +260,9 @@ async def _mainline(event):
                 await event.respond(f'Выберите персонажа с которым вы хотите встречаться!', buttons=keyboard)
             else:
                 await event.respond('У вас нет персонажей с которыми можно было бы встречаться! Время пойти в казик!!!')
+
+        if 'кто канон пейринг с Растом?':
+            await event.reply('Очевидно, что это @VeraKorneplod')
         
         if 'регистрация' in event.raw_text:
             userData = event.raw_text.split()
