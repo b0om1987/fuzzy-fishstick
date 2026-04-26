@@ -42,11 +42,11 @@ oskprefix = ['прогнившее', 'тупое', 'уёбищное', 'ебан
              'пиздоблядское, охуевшее', 'ничтожное',
              'ебануто трахнутое божественными силами', 'хуёвое, обесцененное просто',
              'не нужное никому нахуй в мире', 'припизднутое', 'бредящее', 'ублюдошное',
-             'залупососное', 'гомеопатическое']
+             'залупососное', 'гомеопатическое', 'дебилоидное']
 oskmain = ['чмо', 'животное', 'хуйло', 'ебланище', 'трепло', 'быдло', 'говно', 'фуфло',
            'чучело', 'подобие человека', 'уёбище', 'говнорождающее предприятие',
            'чудище', 'чудовище', 'ничтожество', 'ублюдище', 'хранилище членов в заднице',
-           'позорище', 'долбаёбище', 'мудило', 'пидорасище']
+           'позорище', 'долбаёбище', 'мудило', 'пидорасище', 'создание']
 postfix = ['у тебя вообще нету алиби', 'и твоя мать давно уже не жива',
            'я с тебя одуреваю блять', 'батю найди потом пизди',
            'выйди из чата и не возвращайся блять', 'ливай с позором блять',
@@ -104,12 +104,15 @@ async def _mainline(event):
             pref2 = choice(oskprefix)
             while pref2 == pref1:
                 pref2 = choice(oskprefix)
-                
-            if post_id != None:
-                await post_id.reply(f'{choice(prefix)}, {choice(adressing)} {pref1}, {pref2} {osk1}, {choice(postfix)}, {osk2} {choice(mat)}')
+
+            if randint(1, 10) != 7:
+                if post_id != None:
+                    await post_id.reply(f'{choice(prefix)}, {choice(adressing)} {pref1}, {pref2} {osk1}, {choice(postfix)}, {osk2} {choice(mat)}')
+                else:
+                    await event.respond(f'{choice(prefix)}, {choice(adressing)} {pref1}, {pref2} {osk1}, {choice(postfix)}, {osk2} {choice(mat)}')
+                print('Done!')
             else:
-                await event.respond(f'{choice(prefix)}, {choice(adressing)} {pref1}, {pref2} {osk1}, {choice(postfix)}, {osk2} {choice(mat)}')
-            print('Done!')
+                await event.respond("не хочу")
             
     #if event.chat_id == TltFlood or event.chat_id == TestingChat:
     if True:
@@ -176,7 +179,7 @@ async def _mainline(event):
     if 'кто канон пейринг с Растом?' in event.raw_text:
         await event.reply('Очевидно, что это @VeraKorneplod')
                 
-    if False:
+    if True:
         if 'крутка' in event.raw_text or 'гача' in event.raw_text:
             account = userDatabase.find_one({'userId': str(event.sender_id)})
             if account:
@@ -200,46 +203,57 @@ async def _mainline(event):
                 
     if event.is_private:
         if 'добавить персонажа 1133' in event.raw_text:
-            chID = event.raw_text.split('\n')
-            characterDatabase.insert_one({
-                'chID': int(chID[1]),
-                'chName': chID[2],
-                'chImageID': event.message.photo.id,
-                'chAccessHash': event.message.photo.access_hash,
-                'fileRef': event.message.photo.file_reference
-                })
+            await event.respond(f"{event.message.photo.file_reference}")
+            #chID = event.raw_text.split('\n')
+            #characterDatabase.insert_one({
+            #    'chID': int(chID[1]),
+            #    'chName': chID[2],
+            #    'chImageID': event.message.photo.id,
+            #    'chAccessHash': event.message.photo.access_hash,
+            #    'fileRef': event.message.photo.file_reference
+            #    })
                   
     #if event.is_private:
     if 'свидание' in event.raw_text or 'свиданка' in event.raw_text:
         account = userDatabase.find_one({'userId': str(event.sender_id)})
         if account:
             if "loveIntrest" in account:
-                storyCluster = storyDatabase.find_one({"chId": account["loveIntrest"]["chId"]})
-                #await event.reply(str(storyCluster[f'Date {randint(1, 20)}']))
-                keyboard = []
-                dateID = randint(1, len(storyCluster) - 1)
-                dateNumber = "Date " + str(dateID)
-                
-                buttonData = 'a' + str(f"{storyCluster[dateNumber]['Option 1']['Value']}") + 'z' + str(event.sender_id) + 'i' + str(dateID)
-                buttonData = buttonData.encode()
-                keyboard.append([Button.inline(f"1. {storyCluster[dateNumber]['Option 1']['Value']}", buttonData)])
-                
-                buttonData = 'b' + str(f"{storyCluster[dateNumber]['Option 2']['Value']}") + 'z' + str(event.sender_id) + 'i' + str(dateID)
-                buttonData = buttonData.encode()
-                keyboard.append([Button.inline(f"2. {storyCluster[dateNumber]['Option 2']['Value']}", buttonData)])
-                
-                buttonData = 'c' + str(f"{storyCluster[dateNumber]['Option 3']['Value']}") + 'z' + str(event.sender_id) + 'i' + str(dateID)
-                buttonData = buttonData.encode()
-                keyboard.append([Button.inline(f"3. {storyCluster[dateNumber]['Option 3']['Value']}", buttonData)])
-
-                #building the date string
-
-                dateString = f"<b>{storyCluster[dateNumber]['Date name']}</b>\n\n{storyCluster[dateNumber]['Date description']}\n\n"
-                dateString = dateString + f"1. <i>{storyCluster[dateNumber]['Option 1']['description']}</i>\n"
-                dateString = dateString + f"2. <i>{storyCluster[dateNumber]['Option 2']['description']}</i>\n"
-                dateString = dateString + f"3. <i>{storyCluster[dateNumber]['Option 3']['description']}</i>\n"
-
-                await event.respond(dateString, buttons=keyboard, parse_mode='html')
+                if account["scamCoins"] < 1000:
+                    if event.date - datetime.strptime(f'{account["loveIntrest"]["lastAction"]}+00:00', '%Y-%m-%d %H:%M:%S%z') >= timedelta(hours = 4):
+                        storyCluster = storyDatabase.find_one({"chId": account["loveIntrest"]["chId"]})
+                        #await event.reply(str(storyCluster[f'Date {randint(1, 20)}']))
+                        keyboard = []
+                        dateID = randint(1, len(storyCluster) - 1)
+                        dateNumber = "Date " + str(dateID)
+                            
+                        buttonData = 'a' + str(f"{storyCluster[dateNumber]['Option 1']['Value']}") + 'z' + str(event.sender_id) + 'i' + str(dateID)
+                        buttonData = buttonData.encode()
+                        keyboard.append([Button.inline(f"1. Цена: {storyCluster[dateNumber]['Option 1']['Value']} скамкоинов", buttonData)])
+                            
+                        buttonData = 'b' + str(f"{storyCluster[dateNumber]['Option 2']['Value']}") + 'z' + str(event.sender_id) + 'i' + str(dateID)
+                        buttonData = buttonData.encode()
+                        keyboard.append([Button.inline(f"2. Цена: {storyCluster[dateNumber]['Option 2']['Value']} скамкоинов", buttonData)])
+                            
+                        buttonData = 'c' + str(f"{storyCluster[dateNumber]['Option 3']['Value']}") + 'z' + str(event.sender_id) + 'i' + str(dateID)
+                        buttonData = buttonData.encode()
+                        keyboard.append([Button.inline(f"3. Цена: {storyCluster[dateNumber]['Option 3']['Value']} скамкоинов", buttonData)])
+            
+                        #building the date string
+            
+                        dateString = f"<b>{storyCluster[dateNumber]['Date name']}</b>\n\n{storyCluster[dateNumber]['Date description']}\n\n"
+                        dateString = dateString + f"1. <i>{storyCluster[dateNumber]['Option 1']['description']}</i>\n"
+                        dateString = dateString + f"2. <i>{storyCluster[dateNumber]['Option 2']['description']}</i>\n"
+                        dateString = dateString + f"3. <i>{storyCluster[dateNumber]['Option 3']['description']}</i>\n"
+        
+                        userDatabase.update_one(account, {
+                            '$inc': {"scamCoins": -1000}
+                        })
+        
+                        await event.respond(dateString, buttons=keyboard, parse_mode='html')
+                    else:
+                        await event.reply(f"скорострелам привет)\n{account['userName']}, ты пойми, слишком часто на свиданки ходить это так никто не делает {choice(mat)}\nтак что подожди немного потом снова иди а то чё ты блять как проститутка я не могу нахуй")
+                else:
+                    await event.reply(f"бомжара ебаный у тебя скамкоинов не хватает\nнадо касарь а у тебя {account["scamCoins"]} {choice(oskprefix)} {oskmain} {choice(mat)}")
             else:
                 await event.reply('Любовный интерес не найден! Выберите его в личных сообщениях бота с помощью комманды "любовь".')
         else:
@@ -313,7 +327,8 @@ async def _mainline(event):
                         userDatabase.update_one(account, {'$set':
                                 {
                                 "genderMale": isuserMale,
-                                "userName": userDatingName
+                                "userName": userDatingName,
+                                "loveIntrest.lastAction": datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z')
                                 }
                         })
                         await event.reply('Регистрация прошла успешно!')
@@ -323,7 +338,8 @@ async def _mainline(event):
                             'scamCoins': 0,
                             'lastWork': datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z'),
                             'genderMale': isuserMale,
-                            'userName': userDatingName
+                            'userName': userDatingName,
+                            'loveIntrest.lastAction': datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z')
                         })
                         await event.reply('Регистрация прошла успешно!')
 
@@ -374,7 +390,8 @@ async def callback(event):
                     newAffection = account["loveIntrest"]["affection"] -3
                     
                 userDatabase.update_one(account, {
-                    '$set': {"loveIntrest.affection": newAffection},
+                    '$set': {"loveIntrest.affection": newAffection,
+                            "loveIntrest.lastAction": event.date},
                     '$inc': {"scamCoins": -int(str(event.data)[3:z])}
                 })
                 
