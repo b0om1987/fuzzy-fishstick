@@ -219,13 +219,13 @@ async def _mainline(event):
                 keyboard = []
                 dateID = randint(1, len(storyCluster) - 1)
                 dateNumber = "Date " + str(dateID)
-                buttonData = 'a' + str(f"{storyCluster[dateNumber]['Option 1']['Value']") + 'z' + str(event.sender_id) + 'i' + f"{dateID}"
+                buttonData = 'a' + str(f"{storyCluster[dateNumber]['Option 1']['Value']}") + 'z' + str(event.sender_id) + 'i' + f"{dateID}"
                 buttonData = buttonData.encode()
                 keyboard.append([Button.inline(f"{storyCluster[dateNumber]['Option 1']['Value']}", buttonData)])
-                buttonData = 'b' + str(f"{storyCluster[dateNumber]['Option 2']['Value']") + 'z' + str(event.sender_id) + 'i' + f"{dateID}"
+                buttonData = 'b' + str(f"{storyCluster[dateNumber]['Option 2']['Value']}") + 'z' + str(event.sender_id) + 'i' + f"{dateID}"
                 buttonData = buttonData.encode()
                 keyboard.append([Button.inline(f"{storyCluster[dateNumber]['Option 2']['Value']}", buttonData)])
-                buttonData = 'c' + str(f"{storyCluster[dateNumber]['Option 3']['Value']") + 'z' + str(event.sender_id) + 'i' + f"{dateID}"
+                buttonData = 'c' + str(f"{storyCluster[dateNumber]['Option 3']['Value']}") + 'z' + str(event.sender_id) + 'i' + f"{dateID}"
                 buttonData = buttonData.encode()
                 keyboard.append([Button.inline(f"{storyCluster[dateNumber]['Option 3']['Value']}", buttonData)])
 
