@@ -219,22 +219,25 @@ async def _mainline(event):
                 keyboard = []
                 dateID = randint(1, len(storyCluster) - 1)
                 dateNumber = "Date " + str(dateID)
+                
                 buttonData = 'a' + str(f"{storyCluster[dateNumber]['Option 1']['Value']}") + 'z' + str(event.sender_id) + 'i' + f"{dateID}"
                 buttonData = buttonData.encode()
-                keyboard.append([Button.inline(f"{storyCluster[dateNumber]['Option 1']['Value']}", buttonData)])
+                keyboard.append([Button.inline(f"1. {storyCluster[dateNumber]['Option 1']['Value']}", buttonData)])
+                
                 buttonData = 'b' + str(f"{storyCluster[dateNumber]['Option 2']['Value']}") + 'z' + str(event.sender_id) + 'i' + f"{dateID}"
                 buttonData = buttonData.encode()
-                keyboard.append([Button.inline(f"{storyCluster[dateNumber]['Option 2']['Value']}", buttonData)])
+                keyboard.append([Button.inline(f"2. {storyCluster[dateNumber]['Option 2']['Value']}", buttonData)])
+                
                 buttonData = 'c' + str(f"{storyCluster[dateNumber]['Option 3']['Value']}") + 'z' + str(event.sender_id) + 'i' + f"{dateID}"
                 buttonData = buttonData.encode()
-                keyboard.append([Button.inline(f"{storyCluster[dateNumber]['Option 3']['Value']}", buttonData)])
+                keyboard.append([Button.inline(f"3. {storyCluster[dateNumber]['Option 3']['Value']}", buttonData)])
 
                 #building the date string
 
                 dateString = f"<b>{storyCluster[dateNumber]['Date name']}</b>\n\n{storyCluster[dateNumber]['Date description']}\n\n"
-                dateString = dateString + f"1) {storyCluster[dateNumber]['Option 1']['description']}\n"
-                dateString = dateString + f"2) {storyCluster[dateNumber]['Option 2']['description']}\n"
-                dateString = dateString + f"3) {storyCluster[dateNumber]['Option 3']['description']}\n"
+                dateString = dateString + f"1. <i>{storyCluster[dateNumber]['Option 1']['description']}</i>\n"
+                dateString = dateString + f"2. <i>{storyCluster[dateNumber]['Option 2']['description']}</i>\n"
+                dateString = dateString + f"3. <i>{storyCluster[dateNumber]['Option 3']['description']}</i>\n"
 
                 await event.respond(dateString, buttons=keyboard, parse_mode='html')
             else:
@@ -242,12 +245,12 @@ async def _mainline(event):
         else:
             await event.reply('Аккаунт не найден! Зарегистрируйтесь в личных сообщениях бота с помощью комманды "регистрация".')
         
-        keyboard = [
-            [Button.inline("First option", b"1")],
-            [Button.inline("Second option", b"2")],
-            [Button.inline("Third option", b"3")]
-        ]
-        await event.respond(f'весело задорно хули я ещё могу сказать {choice(mat)}', buttons=keyboard)
+        #keyboard = [
+        #    [Button.inline("First option", b"1")],
+        #    [Button.inline("Second option", b"2")],
+        #    [Button.inline("Third option", b"3")]
+        #]
+        #await event.respond(f'весело задорно хули я ещё могу сказать {choice(mat)}', buttons=keyboard)
         
 
     if event.is_private:
@@ -360,16 +363,20 @@ async def callback(event):
                 storyCluster = storyDatabase.find_one({"chId": account["loveIntrest"]["chId"]})
                 dateNumber = "Date " + str(event.data[i:-1])
                 if str(event.data)[2] == 'a':
-                    await event.answer(f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]["Result 1"]}")
+                    await event.respond(f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]["Result 1"]}")
                     account["loveIntrest"]["affection"] += 1
                 if str(event.data)[2] == 'b':
-                    await event.answer(f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]["Result 2"]}")
+                    await event.respond(f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]["Result 2"]}")
                     account["loveIntrest"]["affection"] += 2
                 if str(event.data)[2] == 'c':
-                    await event.answer(f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]["Result 3"]}")
+                    await event.respond(f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]["Result 3"]}")
                     account["loveIntrest"]["affection"] += -3
             else:
-                await event.answer(f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>, у вас недостаточно скамкоинов для этого!")
+                await event.respond(f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>, у вас недостаточно скамкоинов для этого!")
+        else:
+            await event.answer("Exception logged in\n\"fuzzy-fishstick/main.py\": str(event.data)[z+1:i-1] is not equal to userDatabase.find_one({'userId': str(event.sender_id)})")
+    else:
+        await event.respond("Exception: z > -1")
 
 client.start()
 client.run_until_disconnected()
