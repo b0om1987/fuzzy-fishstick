@@ -363,14 +363,24 @@ async def callback(event):
                 storyCluster = storyDatabase.find_one({"chId": account["loveIntrest"]["chId"]})
                 dateNumber = "Date " + str(event.data[i:-1])
                 if str(event.data)[2] == 'a':
-                    await client.edit_message(event.chat_id, event.message.id, f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]["Result 1"]}", parse_mode='html')
-                    account["loveIntrest"]["affection"] += 1
+                    await client.edit_message(event.chat_id, event.message_id, f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]["Result 1"]}", parse_mode='html')
+                    newAffection = account["loveIntrest"]["affection"] + 1
                 if str(event.data)[2] == 'b':
-                    await client.edit_message(event.chat_id, event.message.id, f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]["Result 2"]}", parse_mode='html')
-                    account["loveIntrest"]["affection"] += 2
+                    await client.edit_message(event.chat_id, event.message_id, f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]["Result 2"]}", parse_mode='html')
+                    newAffection = account["loveIntrest"]["affection"] + 2
                 if str(event.data)[2] == 'c':
-                    await client.edit_message(event.chat_id, event.message.id, f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]["Result 3"]}", parse_mode='html')
-                    account["loveIntrest"]["affection"] += -3
+                    await client.edit_message(event.chat_id, event.message_id, f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]["Result 3"]}", parse_mode='html')
+                    newAffection = account["loveIntrest"]["affection"] -3
+                    
+                userDatabase.update_one(account, {'$set':
+                    {
+                    "loveIntrest": {
+                        "affection": newAffection
+                    },
+                    "scamCoins": account["scamCoins"] - int(str(event.data)[3:z])
+                    }
+                })
+                
             else:
                 await event.answer(f"У вас недостаточно скамкоинов для этого действия!\nВаш балик: {account["scamCoins"]}\nНеобходимо: {int(str(event.data)[3:z])}")
         else:
