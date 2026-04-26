@@ -357,9 +357,9 @@ async def callback(event):
     z = str(event.data).find('z')
     if z != -1:
         i = str(event.data).find('i')
-        if str(event.sender_id) == str(event.data)[z+1:i-1]:
+        if str(event.sender_id) == str(event.data)[z+1:i]:
             account = userDatabase.find_one({'userId': str(event.sender_id)})
-            if account["scamCoins"] < int(str(event.data)[3:z-1]):
+            if account["scamCoins"] < int(str(event.data)[3:z]):
                 storyCluster = storyDatabase.find_one({"chId": account["loveIntrest"]["chId"]})
                 dateNumber = "Date " + str(event.data[i:-1])
                 if str(event.data)[2] == 'a':
@@ -374,8 +374,8 @@ async def callback(event):
             else:
                 await event.answer("У вас недостаточно скамкоинов для этого действия!")
         else:
-            await event.answer("Exception logged in\"fuzzy-fishstick/main.py\":\nstr(event.data)[z+1:i-1] is not equal to userDatabase.find_one({'userId': str(event.sender_id)})")
-            await event.respond(f"{str(event.sender_id)}\n{str(event.data)[z+1:i-1]}")
+            await event.answer("Exception logged in \"fuzzy-fishstick/main.py\":\nstr(event.data)[z+1:i-1] is not equal to userDatabase.find_one({'userId': str(event.sender_id)})")
+            #await event.respond(f"{str(event.sender_id)}\n{str(event.data)[z+1:i-1]}")
     else:
         await event.answer("Exception: z > -1")
 
