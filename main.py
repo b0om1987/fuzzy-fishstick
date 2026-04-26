@@ -362,6 +362,7 @@ async def callback(event):
             if account["scamCoins"] >= int(str(event.data)[3:z]):
                 storyCluster = storyDatabase.find_one({"chId": account["loveIntrest"]["chId"]})
                 dateNumber = "Date " + str(event.data)[i+1:-1]
+                
                 if str(event.data)[2] == 'a':
                     await client.edit_message(event.chat_id, event.message_id, f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]["Result 1"]}", parse_mode='html')
                     newAffection = account["loveIntrest"]["affection"] + 1
@@ -372,13 +373,9 @@ async def callback(event):
                     await client.edit_message(event.chat_id, event.message_id, f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]["Result 3"]}", parse_mode='html')
                     newAffection = account["loveIntrest"]["affection"] -3
                     
-                userDatabase.update_one(account, {'$set':
-                    {
-                    "loveIntrest": {
-                        "affection": newAffection
-                    },
-                    "scamCoins": account["scamCoins"] - int(str(event.data)[3:z])
-                    }
+                userDatabase.update_one(account, {
+                    '$set': {"loveIntrest.affection": newAffection},
+                    '$inc': {"scamCoins": -int(str(event.data)[3:z])}
                 })
                 
             else:
