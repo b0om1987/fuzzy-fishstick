@@ -220,15 +220,15 @@ async def _mainline(event):
                 dateID = randint(1, len(storyCluster) - 1)
                 dateNumber = "Date " + str(dateID)
                 
-                buttonData = 'a' + str(f"{storyCluster[dateNumber]['Option 1']['Value']}") + 'z' + str(event.sender_id) + 'i' + f"{dateID}"
+                buttonData = 'a' + str(f"{storyCluster[dateNumber]['Option 1']['Value']}") + 'z' + str(event.sender_id) + 'i' + str(dateID)
                 buttonData = buttonData.encode()
                 keyboard.append([Button.inline(f"1. {storyCluster[dateNumber]['Option 1']['Value']}", buttonData)])
                 
-                buttonData = 'b' + str(f"{storyCluster[dateNumber]['Option 2']['Value']}") + 'z' + str(event.sender_id) + 'i' + f"{dateID}"
+                buttonData = 'b' + str(f"{storyCluster[dateNumber]['Option 2']['Value']}") + 'z' + str(event.sender_id) + 'i' + str(dateID)
                 buttonData = buttonData.encode()
                 keyboard.append([Button.inline(f"2. {storyCluster[dateNumber]['Option 2']['Value']}", buttonData)])
                 
-                buttonData = 'c' + str(f"{storyCluster[dateNumber]['Option 3']['Value']}") + 'z' + str(event.sender_id) + 'i' + f"{dateID}"
+                buttonData = 'c' + str(f"{storyCluster[dateNumber]['Option 3']['Value']}") + 'z' + str(event.sender_id) + 'i' + str(dateID)
                 buttonData = buttonData.encode()
                 keyboard.append([Button.inline(f"3. {storyCluster[dateNumber]['Option 3']['Value']}", buttonData)])
 
@@ -361,7 +361,7 @@ async def callback(event):
             account = userDatabase.find_one({'userId': str(event.sender_id)})
             if account["scamCoins"] >= int(str(event.data)[3:z]):
                 storyCluster = storyDatabase.find_one({"chId": account["loveIntrest"]["chId"]})
-                dateNumber = "Date " + str(event.data[i:-1])
+                dateNumber = "Date " + str(event.data)[i+1:-1]
                 if str(event.data)[2] == 'a':
                     await client.edit_message(event.chat_id, event.message_id, f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]["Result 1"]}", parse_mode='html')
                     newAffection = account["loveIntrest"]["affection"] + 1
