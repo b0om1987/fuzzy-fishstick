@@ -359,17 +359,17 @@ async def callback(event):
         i = str(event.data).find('i')
         if str(event.sender_id) == str(event.data)[z+1:i]:
             account = userDatabase.find_one({'userId': str(event.sender_id)})
-            if account["scamCoins"] < int(str(event.data)[3:z]):
+            if account["scamCoins"] >= int(str(event.data)[3:z]):
                 storyCluster = storyDatabase.find_one({"chId": account["loveIntrest"]["chId"]})
                 dateNumber = "Date " + str(event.data[i:-1])
                 if str(event.data)[2] == 'a':
-                    await event.respond(f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]["Result 1"]}")
+                    await client.edit_message(event.chat_id, event.message.id, f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]["Result 1"]}", parse_mode='html')
                     account["loveIntrest"]["affection"] += 1
                 if str(event.data)[2] == 'b':
-                    await event.respond(f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]["Result 2"]}")
+                    await client.edit_message(event.chat_id, event.message.id, f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]["Result 2"]}", parse_mode='html')
                     account["loveIntrest"]["affection"] += 2
                 if str(event.data)[2] == 'c':
-                    await event.respond(f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]["Result 3"]}")
+                    await client.edit_message(event.chat_id, event.message.id, f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]["Result 3"]}", parse_mode='html')
                     account["loveIntrest"]["affection"] += -3
             else:
                 await event.answer(f"У вас недостаточно скамкоинов для этого действия!\nВаш балик: {account["scamCoins"]}\nНеобходимо: {int(str(event.data)[3:z])}")
