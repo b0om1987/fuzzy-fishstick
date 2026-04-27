@@ -253,7 +253,7 @@ async def _mainline(event):
                     else:
                         await event.reply(f"скорострелам привет)\n{account['userName']}, ты пойми, слишком часто на свиданки ходить это так никто не делает {choice(mat)}\nтак что подожди немного потом снова иди а то чё ты блять как проститутка я не могу нахуй")
                 else:
-                    await event.reply(f"бомжара ебаный у тебя скамкоинов не хватает\nнадо касарь а у тебя {account["scamCoins"]} {choice(oskprefix)} {oskmain} {choice(mat)}")
+                    await event.reply(f"бомжара ебаный у тебя скамкоинов не хватает\nнадо касарь а у тебя {account["scamCoins"]} {choice(oskprefix)} {choice(oskmain)} {choice(mat)}")
             else:
                 await event.reply('Любовный интерес не найден! Выберите его в личных сообщениях бота с помощью комманды "любовь".')
         else:
