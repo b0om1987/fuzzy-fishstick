@@ -218,7 +218,7 @@ async def _mainline(event):
         account = userDatabase.find_one({'userId': str(event.sender_id)})
         if account:
             if "loveIntrest" in account:
-                if account["scamCoins"] < 1000:
+                if account["scamCoins"] >= 1000:
                     if event.date - datetime.strptime(f'{account["loveIntrest"]["lastAction"]}+00:00', '%Y-%m-%d %H:%M:%S%z') >= timedelta(hours = 4):
                         storyCluster = storyDatabase.find_one({"chId": account["loveIntrest"]["chId"]})
                         #await event.reply(str(storyCluster[f'Date {randint(1, 20)}']))
