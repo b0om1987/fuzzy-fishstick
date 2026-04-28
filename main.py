@@ -94,10 +94,10 @@ async def check_account(event, account):
         if "userName" in account:
             return True
         else:
-            await event.reply("Аккаунт не найден!\n\"Ботис регистрация\" для того чтобы создать новый аккаунт.")
+            await event.reply("Аккаунт не найден!\n\"Ботис регистрация\" в лс с ботом для того чтобы создать новый аккаунт.")
             return False
     else:
-        await event.reply("Аккаунт не найден!\n\"Ботис регистрация\" для того чтобы создать новый аккаунт.")
+        await event.reply("Аккаунт не найден!\n\"Ботис регистрация\" в лс с ботом для того чтобы создать новый аккаунт.")
         return False
 
 
@@ -216,7 +216,7 @@ async def _casino_handler(event):
                     await event.reply(f'У вас недостаточно скамкоинов для крутки!\nНеобходимо 500 скамкоинов, а у вас всего лишь {account["scamCoins"]}\n\nНищета ебаная {choice(mat)}...')
                 else:
                     char_id = random.choices([16, 11, 12, 13, 14, 15], weights = [3, 20, 40, 30, 20, 30], k = 1)[0]
-                    char_data = userDatabase.find_one({'chID': char_id})
+                    char_data = characterDatabase.find_one({'chID': char_id})
                     userDatabase.update_one(account, {
                         '$addToSet': {'characters': char_id},
                         '$set': {'scamCoins': account['scamCoins'] - 500}
