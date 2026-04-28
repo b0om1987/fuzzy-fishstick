@@ -89,7 +89,7 @@ client = TelegramClient(
 
 
 
-def check_account(event, account):
+async def check_account(event, account):
     if account:
         if "userName" in account:
             return True
@@ -99,18 +99,6 @@ def check_account(event, account):
     else:
         await event.reply("Аккаунт не найден!\n\"Ботис регистрация\" для того чтобы создать новый аккаунт.")
         return False
-
-
-def date_builder(event, storyCluster, dateID, dateNumber, dateString):
-    keyboard = []
-    indexRandom = [0, 1, 2]
-    random.shuffle(indexRandom)
-    for currentDate in range(3):
-        buttonData = BHI[indexRandom[currentDate]] + str(f"{storyCluster[dateNumber[f'Option {indexRandom[currentDate] + 1}']['Value']]}") + 'z' + str(event.sender_id) + 'i' + str(dateID)
-        buttonData = buttonData.encode()
-        keyboard.append([Button.inline(f"{currentDate + 1}. Цена: {storyCluster[dateNumber][f'Option {indexRandom[currentDate] + 1}']['Value']} скамкоинов", buttonData)])
-        dateString = dateString + f"{currentDate + 1}. <i>{storyCluster[dateNumber][f'Option {indexRandom[currentDate]}']['description']}</i>\n"
-    return dateString, keyboard
 
 
 
