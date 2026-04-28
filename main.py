@@ -428,7 +428,7 @@ async def callback(event):
                     
                 userDatabase.update_one(account, {
                     '$set': {"loveIntrest.affection": newAffection,
-                            "loveIntrest.lastAction": event.message.date},
+                            "loveIntrest.lastAction": await event.get_message().date},
                     '$inc': {"scamCoins": -int(str(event.data)[3:z])}
                 })
                 
