@@ -261,7 +261,7 @@ async def _date_handler(event):
                         
                         for currentDate in range(3):
                             #buttonData = BHI[indexRandom[currentDate]] + str(f"{storyCluster[dateNumber[f'Option {indexRandom[currentDate] + 1}']['Value']]}") + 'z' + str(event.sender_id) + 'i' + str(dateID)
-                            buttonData = f"{BHI[indexRandom[currentDate]]}{storyCluster[dateNumber[f'Option {indexRandom[currentDate] + 1}']]['Value']}z{event.sender_id}i{dateID}"
+                            buttonData = f"{BHI[indexRandom[currentDate]]}{storyCluster[dateNumber][f'Option {indexRandom[currentDate] + 1}']['Value']}z{event.sender_id}i{dateID}"
                             buttonData = buttonData.encode()
                             keyboard.append([Button.inline(f"{currentDate + 1}. Цена: {storyCluster[dateNumber][f'Option {indexRandom[currentDate] + 1}']['Value']} скамкоинов", buttonData)])
                             dateString = dateString + f"{currentDate + 1}. <i>{storyCluster[dateNumber][f'Option {indexRandom[currentDate]}']['description']}</i>\n"
