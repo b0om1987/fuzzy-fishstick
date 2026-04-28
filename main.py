@@ -215,7 +215,7 @@ async def _casino_handler(event):
                 if account["scamCoins"] < 500:
                     await event.reply(f'У вас недостаточно скамкоинов для крутки!\nНеобходимо 500 скамкоинов, а у вас всего лишь {account["scamCoins"]}\n\nНищета ебаная {choice(mat)}...')
                 else:
-                    char_id = random.choices([10, 11, 12, 13, 14, 15], weights = [20, 40, 30, 20, 30], k = 1)[0]
+                    char_id = random.choices([16, 11, 12, 13, 14, 15], weights = [3, 20, 40, 30, 20, 30], k = 1)[0]
                     char_data = userDatabase.find_one({'chID': char_id})
                     userDatabase.update_one(account, {
                         '$addToSet': {'characters': char_id},
@@ -428,7 +428,7 @@ async def callback(event):
                     
                 userDatabase.update_one(account, {
                     '$set': {"loveIntrest.affection": newAffection,
-                            "loveIntrest.lastAction": event.date},
+                            "loveIntrest.lastAction": event.message.date},
                     '$inc': {"scamCoins": -int(str(event.data)[3:z])}
                 })
                 
