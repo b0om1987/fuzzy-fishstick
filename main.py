@@ -425,10 +425,11 @@ async def callback(event):
                 if str(event.data)[2] == 'c':
                     await client.edit_message(event.chat_id, event.message_id, f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]['Result 3']}", parse_mode='html')
                     newAffection = account["loveIntrest"]["affection"] -3
-                    
+                
+                originalMsg = await event.get_message()
                 userDatabase.update_one(account, {
                     '$set': {"loveIntrest.affection": newAffection,
-                            "loveIntrest.lastAction": await event.get_message().date},
+                            "loveIntrest.lastAction": originalMsg.date},
                     '$inc': {"scamCoins": -int(str(event.data)[3:z])}
                 })
                 
