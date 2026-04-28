@@ -205,7 +205,7 @@ async def _balance_handler(event):
 
 
 @client.on(events.NewMessage(pattern=r"(?i)^Ботис[,]?\s+(?:баннер|гача|крутка)\b[.!]*$"))
-async def _balance_handler(event):
+async def _casino_handler(event):
     
     if True:
         
@@ -260,7 +260,8 @@ async def _date_handler(event):
                         random.shuffle(indexRandom)
                         
                         for currentDate in range(3):
-                            buttonData = BHI[indexRandom[currentDate]] + str(f"{storyCluster[dateNumber[f'Option {indexRandom[currentDate] + 1}']['Value']]}") + 'z' + str(event.sender_id) + 'i' + str(dateID)
+                            #buttonData = BHI[indexRandom[currentDate]] + str(f"{storyCluster[dateNumber[f'Option {indexRandom[currentDate] + 1}']['Value']]}") + 'z' + str(event.sender_id) + 'i' + str(dateID)
+                            buttonData = f"{BHI[indexRandom[currentDate]]}{storyCluster[dateNumber[f'Option {indexRandom[currentDate] + 1}']]['Value']}z{event.sender_id}i{dateID}"
                             buttonData = buttonData.encode()
                             keyboard.append([Button.inline(f"{currentDate + 1}. Цена: {storyCluster[dateNumber][f'Option {indexRandom[currentDate] + 1}']['Value']} скамкоинов", buttonData)])
                             dateString = dateString + f"{currentDate + 1}. <i>{storyCluster[dateNumber][f'Option {indexRandom[currentDate]}']['description']}</i>\n"
@@ -315,7 +316,7 @@ async def _love_handler(event):
 
 
 
-@client.on(events.NewMessage(pattern=r"(?i)^Ботис[,]?\s+(?:рег|регистрация)\b[.!]*$"))
+@client.on(events.NewMessage(pattern=r"(?i)^Ботис[,]?\s+(?:рег|регистрация)\b"))
 async def _registration_handler(event):
     
     if event.is_private:
