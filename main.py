@@ -102,7 +102,7 @@ async def check_account(event, account):
 
 
 
-@client.on(events.NewMessage(pattern=r"(?i)^Ботис[,]?\s+оскорби[!]*$"))
+@client.on(events.NewMessage(pattern=r"(?i)^Ботис[,]?\s+оскорби[.!]*$"))
 async def _osk_handler(event):
     
     #if event.chat_id == TltFlood or event.chat_id == GreenFucker or event.chat_id == PMs or event.chat_id == TestingChat:
@@ -132,7 +132,7 @@ async def _osk_handler(event):
 
 
 
-@client.on(events.NewMessage(pattern=r"(?i)^Ботис[,]?\s+(?:иди|пиздуй)\s+на\s+работу[!]*$"))
+@client.on(events.NewMessage(pattern=r"(?i)^Ботис[,]?\s+(?:иди|пиздуй)\s+на\s+работу[.!]*$"))
 async def _work_handler(event):
     
     if True:
@@ -141,7 +141,7 @@ async def _work_handler(event):
             payout = randint(44, 228)
             user = await event.get_sender()
             account = userDatabase.find_one({'userId': str(event.sender_id)})
-            if check_account(event, account):
+            if await check_account(event, account):
                 if "scamCoins" in account:
                     if event.date - datetime.strptime(f'{account["lastWork"]}+00:00', '%Y-%m-%d %H:%M:%S%z') >= timedelta(minutes = 10):
                         await event.respond(choice(workwords).replace("{user.first_name}", user.first_name) + f"\n> Вы заработали {payout} скамкоинов!", parse_mode='markdown')
@@ -191,7 +191,7 @@ async def _balance_handler(event):
     if True:
         
         account = userDatabase.find_one({'userId': str(event.sender_id)})
-        if check_account(event, account):
+        if await check_account(event, account):
             if "scamCoins" in account:
                 await event.reply(f'Ваш баланс: {account["scamCoins"]} скамкоинов!')
             else:
@@ -210,7 +210,7 @@ async def _balance_handler(event):
     if True:
         
         account = userDatabase.find_one({'userId': str(event.sender_id)})
-        if check_account(event, account):
+        if await check_account(event, account):
             if "scamCoins" in account:
                 if account["scamCoins"] < 500:
                     await event.reply(f'У вас недостаточно скамкоинов для крутки!\nНеобходимо 500 скамкоинов, а у вас всего лишь {account["scamCoins"]}\n\nНищета ебаная {choice(mat)}...')
@@ -245,7 +245,7 @@ async def _date_handler(event):
     if True:
     
         account = userDatabase.find_one({'userId': str(event.sender_id)})
-        if check_account(event, account):
+        if await check_account(event, account):
             if "loveIntrest" in account:
                 if account["scamCoins"] >= 1000:
                     if event.date - datetime.strptime(f'{account["loveIntrest"]["lastAction"]}+00:00', '%Y-%m-%d %H:%M:%S%z') >= timedelta(hours = 4):
@@ -285,7 +285,7 @@ async def _love_handler(event):
     if event.is_private:
         
         account = userDatabase.find_one({'userId': str(event.sender_id)})
-        if check_account(event, account):
+        if await check_account(event, account):
             keyboard = []
             if 13 in account["characters"]:
                 answerString = 'l13' + str(event.sender_id)
