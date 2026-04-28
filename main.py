@@ -22,60 +22,64 @@ global adressing
 global oskprefix
 global oskmain
 global postfix
+global BHI
 
+BHI = ['a', 'b', 'c']
 TltFlood = -1003481332457
 TestingChat = -5121472948
 PMs = 1272926086
 GreenFucker = -1002097505858
 
-prefix = ['Р‘Р»СЏС‚СЊ', 'РЎСѓРєР°', 'РЃР± С‚РІРѕСЋ РјР°С‚СЊ', 'РџРёР·РґРµС†', 'РЃР±Р°РЅС‹Р№ СЃРІРµС‚ Р±Р»СЏС‚СЊ',
-          'РљР°Рє РјРµРЅСЏ СЌС‚Рѕ Р·Р°РµР±Р»Рѕ СѓР¶Рµ', 'Р”Р° СЏ РјР°С‚СЊ С‚РІРѕСЋ РµР±Р°Р»', 'РњСѓРґРёР»Рѕ РіРѕСЂРѕС…РѕРІРѕРµ',
-          'РћР№ РЅРµ С‰РµРєРѕС‡Рё РјРѕСЋ Р·Р°Р»СѓРїСѓ', 'РЇ РѕСЂСѓ СЃ С‚РµР±СЏ', 'РњР°С‚СЊ РјРѕСЏ Р¶РµРЅС‰РёРЅР°',
-          'РќСѓ СЃСѓРєР°, Р±Р»СЏС‚СЊ', 'РћР№ Р±Р»СЏС‚СЊ', 'РћР№ СЃСѓРєР°', 'Р”Р° РµР±СѓС‡РёР№ СЃР»СѓС‡Р°Р№',
-          'Р•Р±Р°С‚СЊ РјРѕР№ СЂРѕС‚ РЅР°РєРѕРІР°Р»СЊРЅРµР№ Р±Р»СЏС‚СЊ', 'РћС… РїРёР·РґРµС†', 'Р”Р° С‚С‹ РјРµРЅСЏ Р·Р°РµР±С‘С€СЊ']
-adressing = ['С‚С‹,', 'РґР° С‚С‹ Р¶Рµ', 'РєР°РєРѕРµ С‚С‹', 'С‚С‹ РЅР°С…СѓР№', 'С‚С‹ СЃСѓРєР°',
-             'С‚С‹ РІРѕРѕР±С‰Рµ РЅРµ СЃС‚РµСЃРЅСЏРµС€СЊСЃСЏ РґР°Р¶Рµ С‡С‚Рѕ С‚С‹', 'РµР±Р°Р»Рѕ РІР°Р»СЊРЅРё,',
-             'РµР±Р°С‚СЊ С‚С‹', 'РєР°РєРѕРµ Р¶Рµ С‚С‹', 'СЏ РґСѓСЂРµСЋ, РєР°РєРѕРµ С‚С‹']
-oskprefix = ['РїСЂРѕРіРЅРёРІС€РµРµ', 'С‚СѓРїРѕРµ', 'СѓС‘Р±РёС‰РЅРѕРµ', 'РµР±Р°РЅСѓС‚РѕРµ', 'Р±РµР·РјРѕР·РіР»РѕРµ',
-             'Р±РµСЃРїРѕР»РµР·РЅРѕРµ', 'РµР±Р°РЅРѕРµ', 'Р±Р»СЏРґСЃРєРѕРµ', 'РґРµРіРµРЅРµСЂР°С‚СЃРєРѕРµ', 'РїРѕР·РѕСЂРЅРѕРµ',
-             'Р±РѕРіР°С‚РѕРµ', 'С‘Р±РЅСѓС‚РѕРµ', 'С‚СѓРїРѕСЂС‹Р»РѕРµ', 'Р±РµР·РјР°РјРЅРѕРµ', 'РѕС‚РІСЂР°С‚РёС‚РµР»СЊРЅРѕРµ',
-             'РїРёР·РґРѕР±Р»СЏРґСЃРєРѕРµ, РѕС…СѓРµРІС€РµРµ', 'РЅРёС‡С‚РѕР¶РЅРѕРµ',
-             'РµР±Р°РЅСѓС‚Рѕ С‚СЂР°С…РЅСѓС‚РѕРµ Р±РѕР¶РµСЃС‚РІРµРЅРЅС‹РјРё СЃРёР»Р°РјРё', 'С…СѓС‘РІРѕРµ, РѕР±РµСЃС†РµРЅРµРЅРЅРѕРµ РїСЂРѕСЃС‚Рѕ',
-             'РЅРµ РЅСѓР¶РЅРѕРµ РЅРёРєРѕРјСѓ РЅР°С…СѓР№ РІ РјРёСЂРµ', 'РїСЂРёРїРёР·РґРЅСѓС‚РѕРµ', 'Р±СЂРµРґСЏС‰РµРµ', 'СѓР±Р»СЋРґРѕС€РЅРѕРµ',
-             'Р·Р°Р»СѓРїРѕСЃРѕСЃРЅРѕРµ', 'РіРѕРјРµРѕРїР°С‚РёС‡РµСЃРєРѕРµ', 'РґРµР±РёР»РѕРёРґРЅРѕРµ']
-oskmain = ['С‡РјРѕ', 'Р¶РёРІРѕС‚РЅРѕРµ', 'С…СѓР№Р»Рѕ', 'РµР±Р»Р°РЅРёС‰Рµ', 'С‚СЂРµРїР»Рѕ', 'Р±С‹РґР»Рѕ', 'РіРѕРІРЅРѕ', 'С„СѓС„Р»Рѕ',
-           'С‡СѓС‡РµР»Рѕ', 'РїРѕРґРѕР±РёРµ С‡РµР»РѕРІРµРєР°', 'СѓС‘Р±РёС‰Рµ', 'РіРѕРІРЅРѕСЂРѕР¶РґР°СЋС‰РµРµ РїСЂРµРґРїСЂРёСЏС‚РёРµ',
-           'С‡СѓРґРёС‰Рµ', 'С‡СѓРґРѕРІРёС‰Рµ', 'РЅРёС‡С‚РѕР¶РµСЃС‚РІРѕ', 'СѓР±Р»СЋРґРёС‰Рµ', 'С…СЂР°РЅРёР»РёС‰Рµ С‡Р»РµРЅРѕРІ РІ Р·Р°РґРЅРёС†Рµ',
-           'РїРѕР·РѕСЂРёС‰Рµ', 'РґРѕР»Р±Р°С‘Р±РёС‰Рµ', 'РјСѓРґРёР»Рѕ', 'РїРёРґРѕСЂР°СЃРёС‰Рµ', 'СЃРѕР·РґР°РЅРёРµ']
-postfix = ['Сѓ С‚РµР±СЏ РІРѕРѕР±С‰Рµ РЅРµС‚Сѓ Р°Р»РёР±Рё', 'Рё С‚РІРѕСЏ РјР°С‚СЊ РґР°РІРЅРѕ СѓР¶Рµ РЅРµ Р¶РёРІР°',
-           'СЏ СЃ С‚РµР±СЏ РѕРґСѓСЂРµРІР°СЋ Р±Р»СЏС‚СЊ', 'Р±Р°С‚СЋ РЅР°Р№РґРё РїРѕС‚РѕРј РїРёР·РґРё',
-           'РІС‹Р№РґРё РёР· С‡Р°С‚Р° Рё РЅРµ РІРѕР·РІСЂР°С‰Р°Р№СЃСЏ Р±Р»СЏС‚СЊ', 'Р»РёРІР°Р№ СЃ РїРѕР·РѕСЂРѕРј Р±Р»СЏС‚СЊ',
-           'СѓС…РѕРґРё РЅР°С…СѓР№ Рё РµР±Р»РёС‰Рµ Р·Р°РєСЂС‹С‚СЊ РЅРµ Р·Р°Р±СѓРґСЊ Р·Р° СЃРѕР±РѕР№',
-           'РїРѕР№РґРё РјР°РјСѓ СЃРІРѕСЋ РѕР±РЅРёРјРё РїРѕРєСѓРґР° РјРѕР·Рі СЃРѕРІСЃРµРј РЅРµ СЃРіРЅРёР»',
-           'РїРѕРЅСЋС…Р°Р№ СЏР№С†Р° РјРЅРµ РЅР°С…СѓР№', 'РєСѓРїРё СЃРµР±Рµ РїСЂРµР·РµСЂРІР°С‚РёРІ Рё РЅРµ СЂР°Р·РјРЅРѕР¶Р°Р№СЃСЏ',
-           'РїСЂРµРєСЂР°С‰Р°Р№ Р±СЂРµРґРёС‚СЊ РЅР°С…СѓР№ РїРѕРєР° СЏ С‚РµР±Рµ СЂРѕС‚ С‡Р»РµРЅРѕРј РЅРµ Р·Р°С‚РєРЅСѓР»',
-           'Р·Р°С‚РєРЅРё РїСЂРѕСЃС‚Рѕ РµР±Р»РµС‚ Рё РІСЃС‘ РЅР°С…СѓР№', 'Р·Р°РєСЂРѕР№ РµР±Р°Р»Рѕ СЃРІРѕС‘ Рё РЅРµ РµР±Рё РјРѕР·РіРё',
-           'СЃРЅРёРјРёСЃСЊ РІ РІРёРґРѕСЃРµ Р±СЂР°Р№РЅ РјР°РїСЃР° С…Р°С…Р°С…Р°']
-mat = ['Р±Р»СЏС‚СЊ', 'СЃСѓРєР°', 'РЅР°С…СѓР№']
-workwords = ['РўР°Рє СѓР¶ Рё Р±С‹С‚СЊ, {user.first_name}, СЂР°РґРё С‚РµР±СЏ - СЃРіРѕРЅСЏСЋ.',
-            'РЅРµ',
+prefix = ['Блять', 'Сука', 'Ёб твою мать', 'Пиздец', 'Ёбаный свет блять',
+          'Как меня это заебло уже', 'Да я мать твою ебал', 'Мудило гороховое',
+          'Ой не щекочи мою залупу', 'Я ору с тебя', 'Мать моя женщина',
+          'Ну сука, блять', 'Ой блять', 'Ой сука', 'Да ебучий случай',
+          'Ебать мой рот наковальней блять', 'Ох пиздец', 'Да ты меня заебёшь']
+adressing = ['ты,', 'да ты же', 'какое ты', 'ты нахуй', 'ты сука',
+             'ты вообще не стесняешься даже что ты', 'ебало вальни,',
+             'ебать ты', 'какое же ты', 'я дурею, какое ты']
+oskprefix = ['прогнившее', 'тупое', 'уёбищное', 'ебанутое', 'безмозглое',
+             'бесполезное', 'ебаное', 'блядское', 'дегенератское', 'позорное',
+             'богатое', 'ёбнутое', 'тупорылое', 'безмамное', 'отвратительное',
+             'пиздоблядское, охуевшее', 'ничтожное',
+             'ебануто трахнутое божественными силами', 'хуёвое, обесцененное просто',
+             'не нужное никому нахуй в мире', 'припизднутое', 'бредящее', 'ублюдошное',
+             'залупососное', 'гомеопатическое', 'дебилоидное']
+oskmain = ['чмо', 'животное', 'хуйло', 'ебланище', 'трепло', 'быдло', 'говно', 'фуфло',
+           'чучело', 'подобие человека', 'уёбище', 'говнорождающее предприятие',
+           'чудище', 'чудовище', 'ничтожество', 'ублюдище', 'хранилище членов в заднице',
+           'позорище', 'долбаёбище', 'мудило', 'пидорасище', 'создание']
+postfix = ['у тебя вообще нету алиби', 'и твоя мать давно уже не жива',
+           'я с тебя одуреваю блять', 'батю найди потом пизди',
+           'выйди из чата и не возвращайся блять', 'ливай с позором блять',
+           'уходи нахуй и еблище закрыть не забудь за собой',
+           'пойди маму свою обними покуда мозг совсем не сгнил',
+           'понюхай яйца мне нахуй', 'купи себе презерватив и не размножайся',
+           'прекращай бредить нахуй пока я тебе рот членом не заткнул',
+           'заткни просто еблет и всё нахуй', 'закрой ебало своё и не еби мозги',
+           'снимись в видосе брайн мапса хахаха']
+mat = ['блять', 'сука', 'нахуй']
+workwords = ['Так уж и быть, {user.first_name}, ради тебя - сгоняю.',
+            'не',
             'We work to earn the right to work to earn the right to work to earn the right to work to earn the right to work to earn the right to give ourselves the right to buy ourselves the right to live to earn the right to die',
-            'РЇ РЅРµ С‚Р°Рє РјРЅРѕРіРѕ РїСЂРёРґСѓРјР°Р» РЅРѕРІС‹С… СЃС‚СЂРѕС‡РµРє РґР»СЏ СЂР°Р±РѕС‚С‹, {user.first_name}, С‚Р°Рє С‡С‚Рѕ РёРґРё РЅР°С…СѓР№ Р±Р»СЏС‚СЊ!',
-            'РќСѓ С…РѕСЂРѕС€Рѕ, РїРѕР№РґСѓ СЂРµС„Р°РєС‚РѕСЂРёС‚СЊ РєРѕРґ РІС‚РѕСЂРѕР№ СЂР°Р· РїРѕСЃР»Рµ С‚РѕРіРѕ РєР°Рє СѓС€С‘Р» СЃРїР°С‚СЊ Рё Р·Р°Р±С‹Р» СЃРѕС…СЂР°РЅРёС‚СЊСЃСЏ',
-            'Р­Р­Р­Р­Р­ Р’РЎРњР«РЎР›Р• Р РђР‘РћРўРђРўР¬ Р° РµСЃР»Рё СЏ РЅРµ С…РѕС‡Сѓ...\nСЃСѓРєР° РјРµРЅСЏ РµСЂР¶Р°РЅРѕРј СЃРґРµР»Р°Р»Рё СЌС‚Рѕ РїРёР·РґРµС† РіРѕСЃРїРѕРґР°!',
-            'РЅСѓ РЅРµРµРµ( РЅСѓ РјРЅРµ Р»РµРЅСЊ( СЏ РЅРµ С…РѕС‡Сѓ((( РЅСѓ Р»Р°Р°Р°РґРЅРѕ, {user.first_name}(',
-            'РћРїСЏС‚СЊ РЅР° СЂР°Р±РѕС‚Сѓ... РћРїСЏС‚СЊ СЏРЅРґРµРєСЃ... РћРїСЏС‚СЊ СЃРєР»Р°Рґ... РћРїСЏС‚СЊ 24 С‡Р°СЃР° СЃРјРµРЅС‹... Р‘Р°Р»СЏСЏСЏ...',
-            'РћРєРµ, Р±РµР· РІРѕРїСЂРѕСЃРѕРІ С…СѓР»Рё',
-            'РґР° РЅРµ, РЅСѓ РЅР°С…СѓР№, РєР°РєР°СЏ СЂР°Р±РѕС‚Р°, РµР±Р°РЅСѓ С‡С‚РѕР»СЊ Р±Р»\nРѕР№РґСѓ Р»СѓС‡С€Рµ Сѓ Р±РѕРјР¶Р° РїР°СЂСѓ РєРѕРїРµРµРє СЃРїРёР·Р¶Сѓ',
-            'Р’Р¶Р¶Р¶Р¶ Р’Р¶Р¶Р¶Р¶ Р‘СѓРј Р‘СѓРј Р‘СѓРј С‡Р°С‡Р° С‡Р°С‡Р° С‡Р°С‡Р° РљР Р Р Р Рљ\nР РћР‘РћРў Р‘РћРўРРЎ РР”РЃРў РќРђ Р РђР‘РћРўРЈ',
-            'СЃ С‚РµР±СЏ Р±СѓС‚С‹Р»РєР° РїРёРІР° - СЃ РјРµРЅСЏ Р·Р°СЂРїР»Р°С‚Р°, РёРґС‘С‚?',
-            'РџРѕР№РґС‘Рј РІ РјР°РєРґР°Рє, РјРЅРµ С‚Р°Рј СѓСЋС‚РЅРµР№\nР’РѕР·СЊРјС‘Рј РєР°СЂС‚РѕС€РєСѓ РЅР° РґРІРѕРёС…\nРђ РєСЂРѕС€РєРё СЃРєРѕСЂРјРёРј РіРѕР»СѓР±СЏРј\nР РІ РїР°СЂРєРµ СѓС‚РєР°Рј...\n\nР‘Р»СЏС‚СЊ С‚Р°Рє СЏ Р¶Рµ СЂР°Р±РѕС‚Р°С‚СЊ РІ РјР°РєРґР°РєРµ Р±СѓРґСѓ( РќСѓ С‘Р±Р°РЅС‹Р№ РІ СЂРѕС‚ С‚РѕРіРѕ РІСЃРµРіРѕ РЅР°С…СѓР№',
-            'РЅР° СЂР°Р±РѕС‚Сѓ РіРѕРІРѕСЂРёС€СЊ?\nsome time\nyou gotta believe me\nit\'s not my fault that there\'s so much on tv\n\n> Р’С‹ РЅРёС…СѓСЏ РЅРµ Р·Р°СЂР°Р±РѕС‚Р°Р»Рё! Р‘РѕС‚РёСЃ РѕР±Р»РµРЅРёР»СЃСЏ!\n\nС€СѓС‚РєР°',
-            'РРґСѓ СЂР°Р±РѕС‚Р°С‚СЊ Р»Р°РґРЅРѕ СЃСѓРєР° Р±Р»СЏС‚СЊ\n{user.first_name} С‚С‹ РІ 1% СЃС‚СЂРµРјРёС€СЊСЃСЏ РїРѕРїР°СЃС‚СЊ, РґР°? РЎРІРёРЅСЊСЏ РєР°РїРёС‚Р°Р»РёСЃС‚РёС‡РµСЃРєР°СЏ Р±Р»СЏС‚СЊ...\nР»Р°РґРЅРѕ, СѓРІР°Р¶Р°СЋ)',
-            'Р‘РђР‘РљР Р‘РђР‘РљР РЎРЈРљРђ Р‘РђР‘РљР',
-            'СЏ РјРёС€РєР° РіСѓРјРё Р±СЌСЂ РІРєСѓСЃРЅРµР№С€РёР№ РіСѓРјРё Р±СЌСЂ\nР·Р°С…РѕРґРёС‚Рµ РІ РїРёРІРЅСѓС…Сѓ РїРѕ Р°РґСЂРµСЃСѓ РјРѕСЃРєРѕРІСЃРєР°СЏ 33 РґСЂРѕР±СЊ 2\nРІРѕС‚ С‚Р°РєР°СЏ РЅС‹РЅС‡Рµ СЂР°Р±РѕС‚Р° С…СѓР»Рё Р»СЋРґРµР№ РІ РїРёРІРЅСѓС…Сѓ Р·Р°Р·С‹РІР°С‚СЊ',
-            'РґР° РёРґРё РЅР°С…СѓР№, СЏ Р»СѓС‡С€Рµ РїРµРЅС‚Р°РіРѕРЅ РІР·Р»РѕРјР°СЋ Рё С„Р°Р№Р»С‹ СЌРїС€С‚РµР№РЅР° СЃРѕР»СЊСЋ Р·Р° Р±Р°Р±РєРё С‡РµРј СЂР°Р±РѕС‚Р°С‚СЊ Р±СѓРґСѓ']
-  
+            'Я не так много придумал новых строчек для работы, {user.first_name}, так что иди нахуй блять!',
+            'Ну хорошо, пойду рефакторить код второй раз после того как ушёл спать и забыл сохраниться',
+            'ЭЭЭЭЭ ВСМЫСЛЕ РАБОТАТЬ а если я не хочу...\nсука меня ержаном сделали это пиздец господа!',
+            'ну неее( ну мне лень( я не хочу((( ну лааадно, {user.first_name}(',
+            'Опять на работу... Опять яндекс... Опять склад... Опять 24 часа смены... Баляяя...',
+            'Оке, без вопросов хули',
+            'да не, ну нахуй, какая работа, ебану чтоль бл\nойду лучше у бомжа пару копеек спизжу',
+            'Вжжжж Вжжжж Бум Бум Бум чача чача чача КРРРРК\nРОБОТ БОТИС ИДЁТ НА РАБОТУ',
+            'с тебя бутылка пива - с меня зарплата, идёт?',
+            'Пойдём в макдак, мне там уютней\nВозьмём картошку на двоих\nА крошки скормим голубям\nИ в парке уткам...\n\nБлять так я же работать в макдаке буду( Ну ёбаный в рот того всего нахуй',
+            'на работу говоришь?\nsome time\nyou gotta believe me\nit\'s not my fault that there\'s so much on tv\n\n> Вы нихуя не заработали! Ботис обленился!\n\nшутка',
+            'Иду работать ладно сука блять\n{user.first_name} ты в 1% стремишься попасть, да? Свинья капиталистическая блять...\nладно, уважаю)',
+            'БАБКИ БАБКИ СУКА БАБКИ',
+            'я мишка гуми бэр вкуснейший гуми бэр\nзаходите в пивнуху по адресу московская 33 дробь 2\nвот такая нынче работа хули людей в пивнуху зазывать',
+            'да иди нахуй, я лучше пентагон взломаю и файлы эпштейна солью за бабки чем работать буду']
+
+
+
 client = TelegramClient(
     'Edge Sesh', os.getenv('API_ID'), os.getenv('API_HASH'),
     system_version = os.getenv('SYSTEM_VERSION'),
@@ -83,108 +87,145 @@ client = TelegramClient(
     app_version = os.getenv('APP_VERSION'),
     local_addr = ('0.0.0.0', 19133)).start(bot_token=os.getenv('TOKEN'))
 
-@client.on(events.NewMessage(pattern='Р‘РѕС‚РёСЃ (.+)'))
-async def _mainline(event):
-    
-    global database
+
+
+def check_account(event, account):
+    if account:
+        if "userName" in account:
+            return True
+        else:
+            await event.reply("Аккаунт не найден!\n\"Ботис регистрация\" для того чтобы создать новый аккаунт.")
+            return False
+    else:
+        await event.reply("Аккаунт не найден!\n\"Ботис регистрация\" для того чтобы создать новый аккаунт.")
+        return False
+
+
+def date_builder(event, storyCluster, dateID, dateNumber, dateString):
+    keyboard = []
+    indexRandom = [0, 1, 2]
+    random.shuffle(indexRandom)
+    for currentDate in range(3):
+        buttonData = BHI[indexRandom[currentDate]] + str(f"{storyCluster[dateNumber[f'Option {indexRandom[currentDate] + 1}']['Value']]}") + 'z' + str(event.sender_id) + 'i' + str(dateID)
+        buttonData = buttonData.encode()
+        keyboard.append([Button.inline(f"{currentDate + 1}. Цена: {storyCluster[dateNumber][f'Option {indexRandom[currentDate] + 1}']['Value']} скамкоинов", buttonData)])
+        dateString = dateString + f"{currentDate + 1}. <i>{storyCluster[dateNumber][f'Option {indexRandom[currentDate]}']['description']}</i>\n"
+    return dateString, keyboard
+
+
+
+@client.on(events.NewMessage(pattern=r"(?i)^Ботис[,]?\s+оскорби[!]*$"))
+async def _osk_handler(event):
     
     #if event.chat_id == TltFlood or event.chat_id == GreenFucker or event.chat_id == PMs or event.chat_id == TestingChat:
     if True:
-        
-        if 'РѕСЃРєРѕСЂР±Рё' in event.raw_text:
-            post_id = await event.get_reply_message()
-            
-            # РќРµРїРѕРІС‚РѕСЂСЏСЋС‰РёРµСЃСЏ РѕСЃРєРё
-            osk1 = choice(oskmain)
-            osk2 = choice(oskmain)
-            while osk2 == osk1:
-                osk2 = choice(oskmain)
-            # РќРµРїРѕРІС‚РѕСЂСЏСЋС‰РёРµСЃСЏ РїСЂРёР»Р°РіР°С‚РµР»СЊРЅС‹Рµ
-            pref1 = choice(oskprefix)
-            pref2 = choice(oskprefix)
-            while pref2 == pref1:
-                pref2 = choice(oskprefix)
 
-            if randint(1, 10) != 7:
-                if post_id != None:
-                    await post_id.reply(f'{choice(prefix)}, {choice(adressing)} {pref1}, {pref2} {osk1}, {choice(postfix)}, {osk2} {choice(mat)}')
-                else:
-                    await event.respond(f'{choice(prefix)}, {choice(adressing)} {pref1}, {pref2} {osk1}, {choice(postfix)}, {osk2} {choice(mat)}')
-                print('Done!')
+        post_id = await event.get_reply_message()
+        
+        # Неповторяющиеся оски
+        osk1 = choice(oskmain)
+        osk2 = choice(oskmain)
+        while osk2 == osk1:
+            osk2 = choice(oskmain)
+        
+        # Неповторяющиеся прилагательные
+        pref1 = choice(oskprefix)
+        pref2 = choice(oskprefix)
+        while pref2 == pref1:
+            pref2 = choice(oskprefix)
+
+        if randint(1, 10) != 7:
+            if post_id != None:
+                await post_id.reply(f'{choice(prefix)}, {choice(adressing)} {pref1}, {pref2} {osk1}, {choice(postfix)}, {osk2} {choice(mat)}')
             else:
-                await event.respond("РЅРµ С…РѕС‡Сѓ")
-            
-    #if event.chat_id == TltFlood or event.chat_id == TestingChat:
+                await event.respond(f'{choice(prefix)}, {choice(adressing)} {pref1}, {pref2} {osk1}, {choice(postfix)}, {osk2} {choice(mat)}')
+        else:
+            await event.respond("не хочу")
+
+
+
+@client.on(events.NewMessage(pattern=r"(?i)^Ботис[,]?\s+(?:иди|пиздуй)\s+на\s+работу[!]*$"))
+async def _work_handler(event):
+    
     if True:
-            
-        if 'РёРґРё РЅР° СЂР°Р±РѕС‚Сѓ' in event.raw_text:
-            if randint(1, 100) != 42:
-                payout = randint(44, 228)
-                user = await event.get_sender()
-                account = userDatabase.find_one({'userId': str(event.sender_id)})
-                if account:
+
+        if randint(1, 100) != 42:
+            payout = randint(44, 228)
+            user = await event.get_sender()
+            account = userDatabase.find_one({'userId': str(event.sender_id)})
+            if check_account(event, account):
+                if "scamCoins" in account:
                     if event.date - datetime.strptime(f'{account["lastWork"]}+00:00', '%Y-%m-%d %H:%M:%S%z') >= timedelta(minutes = 10):
-                        await event.respond(choice(workwords).replace("{user.first_name}", user.first_name) + f"\n> Р’С‹ Р·Р°СЂР°Р±РѕС‚Р°Р»Рё {payout} СЃРєР°РјРєРѕРёРЅРѕРІ!", parse_mode='markdown')
+                        await event.respond(choice(workwords).replace("{user.first_name}", user.first_name) + f"\n> Вы заработали {payout} скамкоинов!", parse_mode='markdown')
                         userDatabase.update_one(account, {
                             '$inc': {'scamCoins': payout},
                             '$set': {'lastWork': event.date}
                         })
                         
                     else:
-                        await event.respond(f'{user.first_name}, РЅСѓ С‚С‹ {choice(oskmain)} {choice(oskprefix)}, РґР°Р№ РѕС‚РґРѕС…РЅСѓС‚СЊ {choice(mat)}... Р—Р°РµР±Р°Р»СЃСЏ СЏ РІ РєСЂР°Р№ {choice(mat)}')
+                        await event.respond(f'{user.first_name}, ну ты {choice(oskmain)} {choice(oskprefix)}, дай отдохнуть {choice(mat)}... Заебался я в край {choice(mat)}')
                 else:
                     userDatabase.insert_one({
                         'userId': str(event.sender_id),
                         'scamCoins': payout,
                         'lastWork': event.date
                         })
-                    await event.respond(f'РўР°Рє СѓР¶ Рё Р±С‹С‚СЊ, {user.first_name}, СЂР°РґРё С‚РµР±СЏ - СЃРіРѕРЅСЏСЋ.\n> Р’С‹ Р·Р°СЂР°Р±РѕС‚Р°Р»Рё {payout} СЃРєР°РјРєРѕРёРЅРѕРІ!', parse_mode='markdown')
-                
-                
-            # РџР°СЃС…Р°Р»РєР°
-            else:
-                # РќРµРїРѕРІС‚РѕСЂСЏСЋС‰РёРµСЃСЏ РѕСЃРєРё
-                osk1 = choice(oskmain)
+                    await event.respond(f'Так уж и быть, {user.first_name}, ради тебя - сгоняю.\n> Вы заработали {payout} скамкоинов!', parse_mode='markdown')
+            
+            
+        # Пасхалка
+        else:
+            # Неповторяющиеся оски
+            osk1 = choice(oskmain)
+            osk2 = choice(oskmain)
+            while osk2 == osk1:
                 osk2 = choice(oskmain)
-                while osk2 == osk1:
-                    osk2 = choice(oskmain)
+            osk3 = choice(oskmain)
+            while osk3 == osk2 or osk3 == osk1:
                 osk3 = choice(oskmain)
-                while osk3 == osk2 or osk3 == osk1:
-                    osk3 = choice(oskmain)
-                    
-                # РќРµРїРѕРІС‚РѕСЂСЏСЋС‰РёРµСЃСЏ РїСЂРёР»Р°РіР°С‚РµР»СЊРЅС‹Рµ
-                pref1 = choice(oskprefix)
+                
+            # Неповторяющиеся прилагательные
+            pref1 = choice(oskprefix)
+            pref2 = choice(oskprefix)
+            while pref2 == pref1:
                 pref2 = choice(oskprefix)
-                while pref2 == pref1:
-                    pref2 = choice(oskprefix)
+            pref3 = choice(oskprefix)
+            while pref3 == pref2 or pref3 == pref1:
                 pref3 = choice(oskprefix)
-                while pref3 == pref2 or pref3 == pref1:
-                    pref3 = choice(oskprefix)
-                    
-                await event.reply(f'{choice(prefix)}, С‚С‹ РјРЅРµ РµС‰С‘ РєРѕРјР°РЅРґРѕРІР°С‚СЊ Р±СѓРґРµС€СЊ, {osk1} {pref1}, {pref2} {osk2} {choice(mat)}? Р С‹Р»Рѕ РІР°Р»СЊРЅРё, {choice(postfix)}, {pref3} {osk3} {choice(mat)}')
+                
+            await event.reply(f'{choice(prefix)}, ты мне ещё командовать будешь, {osk1} {pref1}, {pref2} {osk2} {choice(mat)}? Рыло вальни, {choice(postfix)}, {pref3} {osk3} {choice(mat)}')
 
+
+
+@client.on(events.NewMessage(pattern=r"(?i)^Ботис[,]?\s+(?:балик|баланс|мешок)\b[.!]?$"))
+async def _balance_handler(event):
+    
     if True:
-        if 'Р±Р°Р»Р°РЅСЃ' in event.raw_text or 'Р±Р°Р»РёРє' in event.raw_text:
-            account = userDatabase.find_one({'userId': str(event.sender_id)})
-            if account:
-                await event.reply(f'Р’Р°С€ Р±Р°Р»Р°РЅСЃ: {account["scamCoins"]} СЃРєР°РјРєРѕРёРЅРѕРІ!')
+        
+        account = userDatabase.find_one({'userId': str(event.sender_id)})
+        if check_account(event, account):
+            if "scamCoins" in account:
+                await event.reply(f'Ваш баланс: {account["scamCoins"]} скамкоинов!')
             else:
                 userDatabase.insert_one({
                     'userId': str(event.sender_id),
                     'scamCoins': 0,
                     'lastWork': datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z')
                 })
-                await event.reply('Р’Р°С€ Р±Р°Р»Р°РЅСЃ: 0 СЃРєР°РјРєРѕРёРЅРѕРІ!')
+                await event.reply('Ваш баланс: 0 скамкоинов!')
 
-    if 'РєС‚Рѕ РєР°РЅРѕРЅ РїРµР№СЂРёРЅРі СЃ Р Р°СЃС‚РѕРј?' in event.raw_text:
-        await event.reply('РћС‡РµРІРёРґРЅРѕ, С‡С‚Рѕ СЌС‚Рѕ @VeraKorneplod')
-                
+
+
+@client.on(events.NewMessage(pattern=r"(?i)^Ботис[,]?\s+(?:баннер|гача|крутка)\b[.!]*$"))
+async def _balance_handler(event):
+    
     if True:
-        if 'РєСЂСѓС‚РєР°' in event.raw_text or 'РіР°С‡Р°' in event.raw_text:
-            account = userDatabase.find_one({'userId': str(event.sender_id)})
-            if account:
+        
+        account = userDatabase.find_one({'userId': str(event.sender_id)})
+        if check_account(event, account):
+            if "scamCoins" in account:
                 if account["scamCoins"] < 500:
-                    await event.reply(f'РЈ РІР°СЃ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃРєР°РјРєРѕРёРЅРѕРІ РґР»СЏ РєСЂСѓС‚РєРё!\nРќРµРѕР±С…РѕРґРёРјРѕ 500 СЃРєР°РјРєРѕРёРЅРѕРІ, Р° Сѓ РІР°СЃ РІСЃРµРіРѕ Р»РёС€СЊ {account["scamCoins"]}\n\nРќРёС‰РµС‚Р° РµР±Р°РЅР°СЏ {choice(mat)}...')
+                    await event.reply(f'У вас недостаточно скамкоинов для крутки!\nНеобходимо 500 скамкоинов, а у вас всего лишь {account["scamCoins"]}\n\nНищета ебаная {choice(mat)}...')
                 else:
                     char_id = random.choices([10, 11, 12, 13, 14, 15], weights = [20, 40, 30, 20, 30], k = 1)[0]
                     char_data = userDatabase.find_one({'chID': char_id})
@@ -192,31 +233,31 @@ async def _mainline(event):
                         '$addToSet': {'characters': char_id},
                         '$set': {'scamCoins': account['scamCoins'] - 500}
                     })
-                    await event.reply(f'Р’С‹ РїРѕР»СѓС‡РёР»Рё...\n\nРџРµСЂСЃРѕРЅР°Р¶Р° РїРѕ РёРјРµРЅРё {char_data["chName"]}!', file = InputPhoto(char_data["chImageID"], char_data["chAccessHash"], char_data["fileRef"]))
+                    await event.reply(f'Вы получили...\n\nПерсонажа по имени {char_data["chName"]}!', file = InputPhoto(char_data["chImageID"], char_data["chAccessHash"], char_data["fileRef"]))
             else:
                 userDatabase.insert_one({
                     'userId': str(event.sender_id),
                     'scamCoins': 0,
                     'lastWork': datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z')
                 })
-                await event.reply(f'РЈ РІР°СЃ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃРєР°РјРєРѕРёРЅРѕРІ РґР»СЏ РєСЂСѓС‚РєРё!\nРќРµРѕР±С…РѕРґРёРјРѕ 500 СЃРєР°РјРєРѕРёРЅРѕРІ, Р° Сѓ РІР°СЃ РІСЃРµРіРѕ Р»РёС€СЊ 0\n\nРќРёС‰РµС‚Р° РµР±Р°РЅР°СЏ {choice(mat)}...')
-                
-    if event.is_private:
-        if 'РґРѕР±Р°РІРёС‚СЊ РїРµСЂСЃРѕРЅР°Р¶Р° 1133' in event.raw_text:
-            await event.respond(f"{event.message.photo.file_reference}")
-            #chID = event.raw_text.split('\n')
-            #characterDatabase.insert_one({
-            #    'chID': int(chID[1]),
-            #    'chName': chID[2],
-            #    'chImageID': event.message.photo.id,
-            #    'chAccessHash': event.message.photo.access_hash,
-            #    'fileRef': event.message.photo.file_reference
-            #    })
-                  
-    #if event.is_private:
-    if 'СЃРІРёРґР°РЅРёРµ' in event.raw_text or 'СЃРІРёРґР°РЅРєР°' in event.raw_text:
+                await event.reply(f'У вас недостаточно скамкоинов для крутки!\nНеобходимо 500 скамкоинов, а у вас всего лишь 0\n\nНищета ебаная {choice(mat)}...')
+
+
+
+@client.on(events.NewMessage(pattern=r"(?i)^Ботис[,]?\s+(?:свиданка|свидание)\b[.!]*$"))
+async def _date_handler(event):
+    
+    #keyboard = [
+    #    [Button.inline("First option", b"1")],
+    #    [Button.inline("Second option", b"2")],
+    #    [Button.inline("Third option", b"3")]
+    #]
+    #await event.respond(f'весело задорно хули я ещё могу сказать {choice(mat)}', buttons=keyboard)
+    
+    if True:
+    
         account = userDatabase.find_one({'userId': str(event.sender_id)})
-        if account:
+        if check_account(event, account):
             if "loveIntrest" in account:
                 if account["scamCoins"] >= 1000:
                     if event.date - datetime.strptime(f'{account["loveIntrest"]["lastAction"]}+00:00', '%Y-%m-%d %H:%M:%S%z') >= timedelta(hours = 4):
@@ -225,25 +266,16 @@ async def _mainline(event):
                         keyboard = []
                         dateID = randint(1, len(storyCluster) - 1)
                         dateNumber = "Date " + str(dateID)
-                            
-                        buttonData = 'a' + str(f"{storyCluster[dateNumber]['Option 1']['Value']}") + 'z' + str(event.sender_id) + 'i' + str(dateID)
-                        buttonData = buttonData.encode()
-                        keyboard.append([Button.inline(f"1. Р¦РµРЅР°: {storyCluster[dateNumber]['Option 1']['Value']} СЃРєР°РјРєРѕРёРЅРѕРІ", buttonData)])
-                            
-                        buttonData = 'b' + str(f"{storyCluster[dateNumber]['Option 2']['Value']}") + 'z' + str(event.sender_id) + 'i' + str(dateID)
-                        buttonData = buttonData.encode()
-                        keyboard.append([Button.inline(f"2. Р¦РµРЅР°: {storyCluster[dateNumber]['Option 2']['Value']} СЃРєР°РјРєРѕРёРЅРѕРІ", buttonData)])
-                            
-                        buttonData = 'c' + str(f"{storyCluster[dateNumber]['Option 3']['Value']}") + 'z' + str(event.sender_id) + 'i' + str(dateID)
-                        buttonData = buttonData.encode()
-                        keyboard.append([Button.inline(f"3. Р¦РµРЅР°: {storyCluster[dateNumber]['Option 3']['Value']} СЃРєР°РјРєРѕРёРЅРѕРІ", buttonData)])
-            
-                        #building the date string
-            
                         dateString = f"<b>{storyCluster[dateNumber]['Date name']}</b>\n\n{storyCluster[dateNumber]['Date description']}\n\n"
-                        dateString = dateString + f"1. <i>{storyCluster[dateNumber]['Option 1']['description']}</i>\n"
-                        dateString = dateString + f"2. <i>{storyCluster[dateNumber]['Option 2']['description']}</i>\n"
-                        dateString = dateString + f"3. <i>{storyCluster[dateNumber]['Option 3']['description']}</i>\n"
+                        
+                        indexRandom = [0, 1, 2]
+                        random.shuffle(indexRandom)
+                        
+                        for currentDate in range(3):
+                            buttonData = BHI[indexRandom[currentDate]] + str(f"{storyCluster[dateNumber[f'Option {indexRandom[currentDate] + 1}']['Value']]}") + 'z' + str(event.sender_id) + 'i' + str(dateID)
+                            buttonData = buttonData.encode()
+                            keyboard.append([Button.inline(f"{currentDate + 1}. Цена: {storyCluster[dateNumber][f'Option {indexRandom[currentDate] + 1}']['Value']} скамкоинов", buttonData)])
+                            dateString = dateString + f"{currentDate + 1}. <i>{storyCluster[dateNumber][f'Option {indexRandom[currentDate]}']['description']}</i>\n"
         
                         userDatabase.update_one(account, {
                             '$inc': {"scamCoins": -1000}
@@ -251,26 +283,21 @@ async def _mainline(event):
         
                         await event.respond(dateString, buttons=keyboard, parse_mode='html')
                     else:
-                        await event.reply(f"СЃРєРѕСЂРѕСЃС‚СЂРµР»Р°Рј РїСЂРёРІРµС‚)\n{account['userName']}, С‚С‹ РїРѕР№РјРё, СЃР»РёС€РєРѕРј С‡Р°СЃС‚Рѕ РЅР° СЃРІРёРґР°РЅРєРё С…РѕРґРёС‚СЊ СЌС‚Рѕ С‚Р°Рє РЅРёРєС‚Рѕ РЅРµ РґРµР»Р°РµС‚ {choice(mat)}\nС‚Р°Рє С‡С‚Рѕ РїРѕРґРѕР¶РґРё РЅРµРјРЅРѕРіРѕ РїРѕС‚РѕРј СЃРЅРѕРІР° РёРґРё Р° С‚Рѕ С‡С‘ С‚С‹ Р±Р»СЏС‚СЊ РєР°Рє РїСЂРѕСЃС‚РёС‚СѓС‚РєР° СЏ РЅРµ РјРѕРіСѓ РЅР°С…СѓР№")
+                        await event.reply(f"скорострелам привет)\n{account['userName']}, ты пойми, слишком часто на свиданки ходить это так никто не делает {choice(mat)}\nтак что подожди немного потом снова иди а то чё ты блять как проститутка я не могу {choice(mat)}")
                 else:
-                    await event.reply(f"Р±РѕРјР¶Р°СЂР° РµР±Р°РЅС‹Р№ Сѓ С‚РµР±СЏ СЃРєР°РјРєРѕРёРЅРѕРІ РЅРµ С…РІР°С‚Р°РµС‚\nРЅР°РґРѕ РєР°СЃР°СЂСЊ Р° Сѓ С‚РµР±СЏ {account["scamCoins"]} {choice(oskprefix)} {choice(oskmain)} {choice(mat)}")
+                    await event.reply(f"бомжара ебаный у тебя скамкоинов не хватает\nнадо касарь а у тебя {account['scamCoins']} {choice(oskprefix)} {choice(oskmain)} {choice(mat)}")
             else:
-                await event.reply('Р›СЋР±РѕРІРЅС‹Р№ РёРЅС‚РµСЂРµСЃ РЅРµ РЅР°Р№РґРµРЅ! Р’С‹Р±РµСЂРёС‚Рµ РµРіРѕ РІ Р»РёС‡РЅС‹С… СЃРѕРѕР±С‰РµРЅРёСЏС… Р±РѕС‚Р° СЃ РїРѕРјРѕС‰СЊСЋ РєРѕРјРјР°РЅРґС‹ "Р»СЋР±РѕРІСЊ".')
-        else:
-            await event.reply('РђРєРєР°СѓРЅС‚ РЅРµ РЅР°Р№РґРµРЅ! Р—Р°СЂРµРіРёСЃС‚СЂРёСЂСѓР№С‚РµСЃСЊ РІ Р»РёС‡РЅС‹С… СЃРѕРѕР±С‰РµРЅРёСЏС… Р±РѕС‚Р° СЃ РїРѕРјРѕС‰СЊСЋ РєРѕРјРјР°РЅРґС‹ "СЂРµРіРёСЃС‚СЂР°С†РёСЏ".')
-        
-        #keyboard = [
-        #    [Button.inline("First option", b"1")],
-        #    [Button.inline("Second option", b"2")],
-        #    [Button.inline("Third option", b"3")]
-        #]
-        #await event.respond(f'РІРµСЃРµР»Рѕ Р·Р°РґРѕСЂРЅРѕ С…СѓР»Рё СЏ РµС‰С‘ РјРѕРіСѓ СЃРєР°Р·Р°С‚СЊ {choice(mat)}', buttons=keyboard)
-        
+                await event.reply('Любовный интерес не найден! Выберите его в личных сообщениях бота с помощью комманды "Ботис любовь".')
 
+
+
+@client.on(events.NewMessage(pattern=r"(?i)^Ботис[,]?\s+любовь\b[.!]*$"))
+async def _love_handler(event):
+    
     if event.is_private:
-
-        if 'Р»СЋР±РѕРІСЊ' in event.raw_text:
-            account = userDatabase.find_one({'userId': str(event.sender_id)})
+        
+        account = userDatabase.find_one({'userId': str(event.sender_id)})
+        if check_account(event, account):
             keyboard = []
             if 13 in account["characters"]:
                 answerString = 'l13' + str(event.sender_id)
@@ -294,54 +321,75 @@ async def _mainline(event):
                 keyboard.append([Button.inline("Tesla", answerString)])
 
             if len(keyboard) != 0:
-                await event.respond(f'Р’С‹Р±РµСЂРёС‚Рµ РїРµСЂСЃРѕРЅР°Р¶Р° СЃ РєРѕС‚РѕСЂС‹Рј РІС‹ С…РѕС‚РёС‚Рµ РІСЃС‚СЂРµС‡Р°С‚СЊСЃСЏ!', buttons=keyboard)
+                await event.respond(f'Выберите персонажа с которым вы хотите встречаться!', buttons=keyboard)
             else:
-                await event.respond('РЈ РІР°СЃ РЅРµС‚ РїРµСЂСЃРѕРЅР°Р¶РµР№ СЃ РєРѕС‚РѕСЂС‹РјРё РјРѕР¶РЅРѕ Р±С‹Р»Рѕ Р±С‹ РІСЃС‚СЂРµС‡Р°С‚СЊСЃСЏ! Р’СЂРµРјСЏ РїРѕР№С‚Рё РІ РєР°Р·РёРє!!!')
+                await event.respond('У вас нет персонажей с которыми можно было бы встречаться! Время пойти в казик!!!')
 
+
+
+@client.on(events.NewMessage(pattern=r"(?i)^Ботис[,]?\s+(?:рег|регистрация)\b[.!]*$"))
+async def _registration_handler(event):
+    
+    if event.is_private:
         
+        userData = event.raw_text.split()
+        if len(userData) == 2:
+            await event.respond('Чтобы зарегистрировать аккаунт для свиданий, напишите \"регистрация [М/Ж] [Имя]\"')
+        if len(userData) == 4:
+            errorHappened = False
+            if userData[2] != 'Ж' and userData[2] != 'ж' and userData[2] != 'М' and userData[2] != 'м':
+                await event.respond('ало еблище отформатируй правильно команду мне лень писать адекватный процесс регистрации')
+                errorHappened = True
+            else:
+                if userData[2] == 'Ж' or userData[2] == 'ж':
+                    isuserMale = False
+                if userData[2] == 'М' or userData[2] == 'м':
+                    isuserMale = True
+            if userData[3].isalpha() and userData[3].istitle() :
+                userDatingName = userData[3]
+            else:
+                await event.respond('имя должно быть одним словом и с большой буквы капец ты тупица нахуй хахаах учи русский язык мудила')
+                errorHappened = True
+            if errorHappened:
+                await event.respond('ну короче регистрация не прошла, попробуй снова я хз, я обдолбан в нулину и не могу нормальную регистрацию сделать без утечек памяти и ошубок')
+            else:
+                account = userDatabase.find_one({'userId': str(event.sender_id)})
+                if account:
+                    userDatabase.update_one(account, {'$set':
+                            {
+                            "genderMale": isuserMale,
+                            "userName": userDatingName,
+                            "loveIntrest.lastAction": datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z')
+                            }
+                    })
+                    await event.reply('Регистрация прошла успешно!')
+                else:
+                    userDatabase.insert_one({
+                        'userId': str(event.sender_id),
+                        'scamCoins': 0,
+                        'lastWork': datetime.strptime('2024-07-    03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z'),
+                        'genderMale': isuserMale,
+                        'userName': userDatingName,
+                        'loveIntrest.lastAction': datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z')
+                    })
+                    await event.reply('Регистрация прошла успешно!')
+    
+
+@client.on(events.NewMessage(pattern='Ботис добавить персонажа 1133'))
+async def _test_image_info_handler(event):
+    
+    if event.is_private:
+        await event.respond(f"chImageID: {event.message.photo.id}\nchAccessHash: {event.message.photo.access_hash}\nfileRef: {event.message.photo.file_reference}")
+        #chID = event.raw_text.split('\n')
+        #characterDatabase.insert_one({
+        #    'chID': int(chID[1]),
+        #    'chName': chID[2],
+        #    'chImageID': event.message.photo.id,
+        #    'chAccessHash': event.message.photo.access_hash,
+        #    'fileRef': event.message.photo.file_reference
+        #    })
         
-        if 'СЂРµРіРёСЃС‚СЂР°С†РёСЏ' in event.raw_text:
-            userData = event.raw_text.split()
-            if len(userData) == 2:
-                await event.respond('Р§С‚РѕР±С‹ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊ Р°РєРєР°СѓРЅС‚ РґР»СЏ СЃРІРёРґР°РЅРёР№, РЅР°РїРёС€РёС‚Рµ \"СЂРµРіРёСЃС‚СЂР°С†РёСЏ [Рњ/Р–] [РРјСЏ]\"')
-            if len(userData) == 4:
-                errorHappened = False
-                if userData[2] != 'Р–' and userData[2] != 'Р¶' and userData[2] != 'Рњ' and userData[2] != 'Рј':
-                    await event.respond('Р°Р»Рѕ РµР±Р»РёС‰Рµ РѕС‚С„РѕСЂРјР°С‚РёСЂСѓР№ РїСЂР°РІРёР»СЊРЅРѕ РєРѕРјР°РЅРґСѓ РјРЅРµ Р»РµРЅСЊ РїРёСЃР°С‚СЊ Р°РґРµРєРІР°С‚РЅС‹Р№ РїСЂРѕС†РµСЃСЃ СЂРµРіРёСЃС‚СЂР°С†РёРё')
-                    errorHappened = True
-                else:
-                    if userData[2] == 'Р–' or userData[2] == 'Р¶':
-                        isuserMale = False
-                    if userData[2] == 'Рњ' or userData[2] == 'Рј':
-                        isuserMale = True
-                if userData[3].isalpha() and userData[3].istitle() :
-                    userDatingName = userData[3]
-                else:
-                    await event.respond('РёРјСЏ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РѕРґРЅРёРј СЃР»РѕРІРѕРј Рё СЃ Р±РѕР»СЊС€РѕР№ Р±СѓРєРІС‹ РєР°РїРµС† С‚С‹ С‚СѓРїРёС†Р° РЅР°С…СѓР№ С…Р°С…Р°Р°С… СѓС‡Рё СЂСѓСЃСЃРєРёР№ СЏР·С‹Рє РјСѓРґРёР»Р°')
-                    errorHappened = True
-                if errorHappened:
-                    await event.respond('РЅСѓ РєРѕСЂРѕС‡Рµ СЂРµРіРёСЃС‚СЂР°С†РёСЏ РЅРµ РїСЂРѕС€Р»Р°, РїРѕРїСЂРѕР±СѓР№ СЃРЅРѕРІР° СЏ С…Р·, СЏ РѕР±РґРѕР»Р±Р°РЅ РІ РЅСѓР»РёРЅСѓ Рё РЅРµ РјРѕРіСѓ РЅРѕСЂРјР°Р»СЊРЅСѓСЋ СЂРµРіРёСЃС‚СЂР°С†РёСЋ СЃРґРµР»Р°С‚СЊ Р±РµР· СѓС‚РµС‡РµРє РїР°РјСЏС‚Рё Рё РѕС€СѓР±РѕРє')
-                else:
-                    account = userDatabase.find_one({'userId': str(event.sender_id)})
-                    if account:
-                        userDatabase.update_one(account, {'$set':
-                                {
-                                "genderMale": isuserMale,
-                                "userName": userDatingName,
-                                "loveIntrest.lastAction": datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z')
-                                }
-                        })
-                        await event.reply('Р РµРіРёСЃС‚СЂР°С†РёСЏ РїСЂРѕС€Р»Р° СѓСЃРїРµС€РЅРѕ!')
-                    else:
-                        userDatabase.insert_one({
-                            'userId': str(event.sender_id),
-                            'scamCoins': 0,
-                            'lastWork': datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z'),
-                            'genderMale': isuserMale,
-                            'userName': userDatingName,
-                            'loveIntrest.lastAction': datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z')
-                        })
-                        await event.reply('Р РµРіРёСЃС‚СЂР°С†РёСЏ РїСЂРѕС€Р»Р° СѓСЃРїРµС€РЅРѕ!')
+
 
 @client.on(events.CallbackQuery())
 async def callback(event):
@@ -352,23 +400,23 @@ async def callback(event):
             if not ("loveIntrest" in account):
                 if str(event.data)[3:5] == '11':
                     userDatabase.update_one(account, {'$set': {"loveIntrest": {'chId': 11, 'affection': 0}}})
-                    await event.answer('Р’С‹ СѓСЃРїРµС€РЅРѕ РІС‹Р±СЂР°Р»Рё Р”РѕРєР°!')
+                    await event.answer('Вы успешно выбрали Дока!')
                 if str(event.data)[3:5] == '12':
                     userDatabase.update_one(account, {'$set': {"loveIntrest": {'chId': 12, 'affection': 0}}})
-                    await event.answer('РІС‹ РІС‹Р±СЂР°Р»Рё СЂР°СЃС‚Р°')
+                    await event.answer('вы выбрали раста')
                 if str(event.data)[3:5] == '13':
                     userDatabase.update_one(account, {'$set': {"loveIntrest": {'chId': 13, 'affection': 0}}})
-                    await event.answer('Р’С‹ СѓСЃРїРµС€РЅРѕ РІС‹Р±СЂР°Р»Рё Р—РёСЂРѕРІР°РЅР°!')
+                    await event.answer('Вы успешно выбрали Зирована!')
                 if str(event.data)[3:5] == '14':
                     userDatabase.update_one(account, {'$set': {"loveIntrest": {'chId': 14, 'affection': 0}}})
-                    await event.answer('Р’С‹ СѓСЃРїРµС€РЅРѕ РІС‹Р±СЂР°Р»Рё РўРµСЃР»Сѓ!')
+                    await event.answer('Вы успешно выбрали Теслу!')
                 if str(event.data)[3:5] == '15':
                     userDatabase.update_one(account, {'$set': {"loveIntrest": {'chId': 15, 'affection': 0}}})
-                    await event.answer('Р’С‹ СѓСЃРїРµС€РЅРѕ РІС‹Р±СЂР°Р»Рё РђСЂРјСЃС‚СЂРѕРЅРіР°!')
+                    await event.answer('Вы успешно выбрали Армстронга!')
             else:
-                await event.answer('Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, РІС‹ СѓР¶Рµ РІСЃС‚СЂРµС‡Р°РµС‚РµСЃСЊ!')
+                await event.answer('К сожалению, вы уже встречаетесь!')
         else:
-            await event.answer('СЌС‚Рѕ РЅРµ С‚РІРѕСЏ РєРЅРѕРїРєР° РµР±Р»Рѕ СѓС‚РёРЅРѕРµ Р±Р»СЏС‚СЊ')
+            await event.answer('это не твоя кнопка ебло утиное блять')
 
     z = str(event.data).find('z')
     if z != -1:
@@ -380,13 +428,13 @@ async def callback(event):
                 dateNumber = "Date " + str(event.data)[i+1:-1]
                 
                 if str(event.data)[2] == 'a':
-                    await client.edit_message(event.chat_id, event.message_id, f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]["Result 1"]}", parse_mode='html')
+                    await client.edit_message(event.chat_id, event.message_id, f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]['Result 1']}", parse_mode='html')
                     newAffection = account["loveIntrest"]["affection"] + 1
                 if str(event.data)[2] == 'b':
-                    await client.edit_message(event.chat_id, event.message_id, f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]["Result 2"]}", parse_mode='html')
+                    await client.edit_message(event.chat_id, event.message_id, f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]['Result 2']}", parse_mode='html')
                     newAffection = account["loveIntrest"]["affection"] + 2
                 if str(event.data)[2] == 'c':
-                    await client.edit_message(event.chat_id, event.message_id, f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]["Result 3"]}", parse_mode='html')
+                    await client.edit_message(event.chat_id, event.message_id, f"<a href='tg://user?id={str(event.sender_id)}'>{account['userName']}</a>,\n{storyCluster[dateNumber]['Result 3']}", parse_mode='html')
                     newAffection = account["loveIntrest"]["affection"] -3
                     
                 userDatabase.update_one(account, {
@@ -396,7 +444,7 @@ async def callback(event):
                 })
                 
             else:
-                await event.answer(f"РЈ РІР°СЃ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃРєР°РјРєРѕРёРЅРѕРІ РґР»СЏ СЌС‚РѕРіРѕ РґРµР№СЃС‚РІРёСЏ!\nР’Р°С€ Р±Р°Р»РёРє: {account["scamCoins"]}\nРќРµРѕР±С…РѕРґРёРјРѕ: {int(str(event.data)[3:z])}")
+                await event.answer(f"У вас недостаточно скамкоинов для этого действия!\nВаш балик: {account['scamCoins']}\nНеобходимо: {int(str(event.data)[3:z])}")
         else:
             await event.answer("Exception logged in \"fuzzy-fishstick/main.py\":\nstr(event.data)[z+1:i-1] is not equal to userDatabase.find_one({'userId': str(event.sender_id)})")
             #await event.respond(f"{str(event.sender_id)}\n{str(event.data)[z+1:i-1]}")
@@ -405,6 +453,3 @@ async def callback(event):
 
 client.start()
 client.run_until_disconnected()
-
-
-
