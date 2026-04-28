@@ -264,7 +264,7 @@ async def _date_handler(event):
                             buttonData = f"{BHI[indexRandom[currentDate]]}{storyCluster[dateNumber][f'Option {indexRandom[currentDate] + 1}']['Value']}z{event.sender_id}i{dateID}"
                             buttonData = buttonData.encode()
                             keyboard.append([Button.inline(f"{currentDate + 1}. Цена: {storyCluster[dateNumber][f'Option {indexRandom[currentDate] + 1}']['Value']} скамкоинов", buttonData)])
-                            dateString = dateString + f"{currentDate + 1}. <i>{storyCluster[dateNumber][f'Option {indexRandom[currentDate]}']['description']}</i>\n"
+                            dateString = dateString + f"{currentDate + 1}. <i>{storyCluster[dateNumber][f'Option {indexRandom[currentDate] + 1}']['description']}</i>\n"
         
                         userDatabase.update_one(account, {
                             '$inc': {"scamCoins": -1000}
