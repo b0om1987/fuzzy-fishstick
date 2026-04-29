@@ -270,7 +270,7 @@ async def _date_handler(event):
                             '$inc': {"scamCoins": -1000}
                         })
         
-                        await event.respond(dateString, buttons=keyboard, parse_mode='html')
+                        await event.reply(dateString, buttons=keyboard, parse_mode='html')
                     else:
                         await event.reply(f"скорострелам привет)\n{account['userName']}, ты пойми, слишком часто на свиданки ходить это так никто не делает {choice(mat)}\nтак что подожди немного потом снова иди а то чё ты блять как проститутка я не могу {choice(mat)}")
                 else:
