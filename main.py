@@ -300,17 +300,23 @@ async def _casino_handler(event):
                         char_data = characterDatabase.find_one({'chID': char_id})
                         userDatabase.update_one(account, {
                             '$addToSet': {'characters': char_id},
-                            '$set': {'scamCoins': account['scamCoins'] - 500}
+                            '$inc': {'scamCoins': -500}
                         })
                         await event.reply(f'Вы получили...\n\n<b>Персонажа</b> по имени <i>{char_data["chName"]}</i>!', file = InputPhoto(char_data["chImageID"], char_data["chAccessHash"], char_data["fileRef"]), parse_mode='html')
                     else:
                         foodData = burgerDatabase.aggregate([{"$sample": {"size": 1}}])
                         foodData = next(foodData, None)
-                        userDatabase.update_one(account, {
-                            '$addToSet': {'ingredients': foodData["name"]},
-                            '$set': {'scamCoins': account['scamCoins'] - 500}
-                        })
-                        await event.reply(f'Вы получили...\n\n<b>Ингредиент для бургера!</b> В вашем инвентаре теперь есть <i>{foodData["name"]}</i>.', parse_mode='html')
+                        if foodData["name"] in account["ingredients"]:
+                            userDatabase.update_one(account, {
+                                '$inc': {'scamCoins': -500, f"ingredients.{foodData["name"]}": 1}
+                            })
+                            await event.reply(f'Вы получили...\n\n<b>Ингредиент для бургера!</b> В вашем инвентаре теперь есть <i>{foodData["name"]}</i>.', parse_mode='html')
+                        else:
+                            userDatabase.update_one(account, {
+                                '$addToSet': {'ingredients': {f"{foodData["name"]}": 1}},
+                                '$inc': {'scamCoins': -500}
+                            })
+                            await event.reply(f'Вы получили...\n\n<b>Ингредиент для бургера!</b> В вашем инвентаре теперь есть <i>{foodData["name"]}</i>.', parse_mode='html')
             else:
                 userDatabase.insert_one({
                     'userId': str(event.sender_id),
