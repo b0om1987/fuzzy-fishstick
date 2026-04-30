@@ -416,7 +416,7 @@ async def _registration_handler(event):
         if len(userData) == 4:
             errorHappened = False
             if userData[2] != 'Ж' and userData[2] != 'ж' and userData[2] != 'М' and userData[2] != 'м':
-                await event.respond('ало еблище отформатируй правильно команду мне лень писать адекватный процесс регистрации')
+                await event.respond('Что-то пошло совсем наперекосяк')
                 errorHappened = True
             else:
                 if userData[2] == 'Ж' or userData[2] == 'ж':
@@ -426,10 +426,10 @@ async def _registration_handler(event):
             if userData[3].isalpha() and userData[3].istitle() :
                 userDatingName = userData[3]
             else:
-                await event.respond('имя должно быть одним словом и с большой буквы капец ты тупица нахуй хахаах учи русский язык мудила')
+                await event.respond('Имя введено неверно, должно быть с большой буквы и все остальные маленькие.')
                 errorHappened = True
             if errorHappened:
-                await event.respond('ну короче регистрация не прошла, попробуй снова я хз, я обдолбан в нулину и не могу нормальную регистрацию сделать без утечек памяти и ошубок')
+                await event.respond('ну короче регистрация не прошла, попробуй снова я хз')
             else:
                 account = userDatabase.find_one({'userId': str(event.sender_id)})
                 if account:
@@ -451,6 +451,9 @@ async def _registration_handler(event):
                         'loveIntrest.lastAction': datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z')
                     })
                     await event.reply('Регистрация прошла успешно!')
+        else:
+            await event.reply('Неверное количество слов в поле для регистрации')
+                    
     
 
 @client.on(events.NewMessage(pattern='Ботис добавить персонажа 1133'))
