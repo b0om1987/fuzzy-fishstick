@@ -16,6 +16,7 @@ db = mongo_client[os.getenv('DB_NAME')]
 characterDatabase = db['characters']
 userDatabase = db['user_data']
 storyDatabase = db['stories']
+burgerDatabase = db['ingredients']
 
 global prefix
 global adressing
@@ -457,6 +458,23 @@ async def _test_image_info_handler(event):
         #    'fileRef': event.message.photo.file_reference
         #    })
         
+
+
+@client.on(events.NewMessage(pattern='Ботис добавить 1444'))
+async def _test_image_info_handler(event):
+    
+    if event.is_private:
+        #await event.respond(f"chImageID: {event.message.photo.id}\nchAccessHash: {event.message.photo.access_hash}\nfileRef: {event.message.photo.file_reference}")
+        item = event.raw_text.split('\n')
+        burgerDatabase.insert_one({
+            'name': item[1],
+            'type': item[2],
+            'hearty': int(item[3]),
+            'spicy': int(item[4]),
+            'tasty': int(item[5]),
+            'tags': item[6].split(', ')
+            })
+
 
 
 @client.on(events.CallbackQuery())
