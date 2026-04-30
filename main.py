@@ -305,6 +305,7 @@ async def _casino_handler(event):
                         await event.reply(f'Вы получили...\n\n<b>Персонажа</b> по имени <i>{char_data["chName"]}</i>!', file = InputPhoto(char_data["chImageID"], char_data["chAccessHash"], char_data["fileRef"]), parse_mode='html')
                     else:
                         foodData = burgerDatabase.aggregate([{"$sample": {"size": 1}}])
+                        foodData = next(foodData, None)
                         userDatabase.update_one(account, {
                             '$addToSet': {'ingredients': foodData["name"]},
                             '$set': {'scamCoins': account['scamCoins'] - 500}
@@ -411,7 +412,7 @@ async def _registration_handler(event):
         
         userData = event.raw_text.split()
         if len(userData) == 2:
-            await event.respond('Чтобы зарегистрировать аккаунт для свиданий, напишите \"регистрация [М/Ж] [Имя]\"')
+            await event.respond('Чтобы зарегистрировать аккаунт для свиданий, напишите \"Ботис регистрация [М/Ж] [Имя]\"\nПример рабочей строки для регистрации:\nБотис регистрация М Борис')
         if len(userData) == 4:
             errorHappened = False
             if userData[2] != 'Ж' and userData[2] != 'ж' and userData[2] != 'М' and userData[2] != 'м':
