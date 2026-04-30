@@ -306,17 +306,10 @@ async def _casino_handler(event):
                     else:
                         foodData = burgerDatabase.aggregate([{"$sample": {"size": 1}}])
                         foodData = next(foodData, None)
-                        if foodData["name"] in account["ingredients"]:
-                            userDatabase.update_one(account, {
-                                '$inc': {'scamCoins': -500, f"ingredients.{foodData["name"]}": 1}
+                        userDatabase.update_one(account, {
+                            '$inc': {'scamCoins': -500, f"ingredients.{foodData["name"]}": 1}
                             })
-                            await event.reply(f'Вы получили...\n\n<b>Ингредиент для бургера!</b> В вашем инвентаре теперь есть <i>{foodData["name"]}</i>.', parse_mode='html')
-                        else:
-                            userDatabase.update_one(account, {
-                                '$addToSet': {'ingredients': {f"{foodData["name"]}": 1}},
-                                '$inc': {'scamCoins': -500}
-                            })
-                            await event.reply(f'Вы получили...\n\n<b>Ингредиент для бургера!</b> В вашем инвентаре теперь есть <i>{foodData["name"]}</i>.', parse_mode='html')
+                        await event.reply(f'Вы получили...\n\n<b>Ингредиент для бургера!</b> В вашем инвентаре теперь есть <i>{foodData["name"]}</i>.', parse_mode='html')
             else:
                 userDatabase.insert_one({
                     'userId': str(event.sender_id),
