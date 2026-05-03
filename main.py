@@ -444,7 +444,7 @@ async def _registration_handler(event):
                     userDatabase.insert_one({
                         'userId': str(event.sender_id),
                         'scamCoins': 0,
-                        'lastWork': datetime.strptime('2024-07-    03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z'),
+                        'lastWork': datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z'),
                         'genderMale': isuserMale,
                         'userName': userDatingName,
                         'loveIntrest.lastAction': datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z')
