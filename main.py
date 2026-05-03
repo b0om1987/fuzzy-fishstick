@@ -436,7 +436,7 @@ async def _registration_handler(event):
                             {
                             "genderMale": isuserMale,
                             "userName": userDatingName,
-                            "loveIntrest.lastAction": datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z')
+                            "loveIntrest": {"lastAction": datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z')}
                             }
                     })
                     await event.reply('Регистрация прошла успешно!')
@@ -447,7 +447,7 @@ async def _registration_handler(event):
                         'lastWork': datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z'),
                         'genderMale': isuserMale,
                         'userName': userDatingName,
-                        'loveIntrest.lastAction': datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z')
+                        'loveIntrest': {"lastAction": datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z')}
                     })
                     await event.reply('Регистрация прошла успешно!')
         else:
