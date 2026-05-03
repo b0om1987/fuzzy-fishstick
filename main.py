@@ -219,7 +219,7 @@ async def _work_handler(event):
                 if "scamCoins" in account:
                     if event.date - datetime.strptime(f'{account["lastWork"]}+00:00', '%Y-%m-%d %H:%M:%S%z') >= timedelta(minutes = 10):
                         await event.respond(choice(workwords).replace("{user.first_name}", user.first_name) + f"\n> Вы заработали {payout} скамкоинов!", parse_mode='markdown')
-                        userDatabase.update_one(account, {
+                        userDatabase.update_one({'userId': str(event.sender_id)}, {
                             '$inc': {'scamCoins': payout},
                             '$set': {'lastWork': event.date}
                         })
@@ -295,21 +295,21 @@ async def _casino_handler(event):
                 if account["scamCoins"] < 500:
                     await event.reply(f'У вас недостаточно скамкоинов для крутки!\nНеобходимо 500 скамкоинов, а у вас всего лишь {account["scamCoins"]}\n\nНищета ебаная {choice(mat)}...')
                 else:
-                    if randint(1, 10) != 7:
+                    if randint(1, 10) == 7:
                         char_id = random.choices([16, 11, 12, 13, 14, 15], weights = [3, 20, 40, 30, 20, 30], k = 1)[0]
                         char_data = characterDatabase.find_one({'chID': char_id})
                         userDatabase.update_one({'userId': str(event.sender_id)}, {
                             '$addToSet': {'characters': char_id},
                             '$inc': {'scamCoins': -500}
                         })
-                        event.reply(f'Вы получили...\n\n<b>Персонажа</b> по имени <i>{char_data["chName"]}</i>!', file = InputPhoto(char_data["chImageID"], char_data["chAccessHash"], char_data["fileRef"]), parse_mode='html')
+                        await event.reply(f'Вы получили...\n\n<b>Персонажа</b> по имени <i>{char_data["chName"]}</i>!', file = InputPhoto(char_data["chImageID"], char_data["chAccessHash"], char_data["fileRef"]), parse_mode='html')
                     else:
                         foodData = burgerDatabase.aggregate([{"$sample": {"size": 1}}])
                         foodData = next(foodData, None)
                         userDatabase.update_one({'userId': str(event.sender_id)}, {
                             '$inc': {'scamCoins': -500, f"ingredients.{foodData["name"]}": 1}
                             })
-                        event.reply(f'Вы получили...\n\n<b>Ингредиент для бургера!</b> В вашем инвентаре теперь есть <i>{foodData["name"]}</i>.', parse_mode='html')
+                        await event.reply(f'Вы получили...\n\n<b>Ингредиент для бургера!</b> В вашем инвентаре теперь есть <i>{foodData["name"]}</i>.', parse_mode='html')
             else:
                 userDatabase.insert_one({
                     'userId': str(event.sender_id),
@@ -354,7 +354,7 @@ async def _date_handler(event):
                             keyboard.append([Button.inline(f"{currentDate + 1}. Цена: {storyCluster[dateNumber][f'Option {indexRandom[currentDate] + 1}']['Value']} скамкоинов", buttonData)])
                             dateString = dateString + f"{currentDate + 1}. <i>{storyCluster[dateNumber][f'Option {indexRandom[currentDate] + 1}']['description']}</i>\n"
         
-                        userDatabase.update_one(account, {
+                        userDatabase.update_one({'userId': str(event.sender_id)}, {
                             '$inc': {"scamCoins": -1000}
                         })
         
@@ -432,7 +432,7 @@ async def _registration_handler(event):
             else:
                 account = userDatabase.find_one({'userId': str(event.sender_id)})
                 if account:
-                    userDatabase.update_one(account, {'$set':
+                    userDatabase.update_one({'userId': str(event.sender_id)}, {'$set':
                             {
                             "genderMale": isuserMale,
                             "userName": userDatingName,
@@ -496,19 +496,19 @@ async def callback(event):
             account = userDatabase.find_one({'userId': str(event.sender_id)})
             if not ("loveIntrest" in account):
                 if str(event.data)[3:5] == '11':
-                    userDatabase.update_one(account, {'$set': {"loveIntrest": {'chId': 11, 'affection': 0}}})
+                    userDatabase.update_one({'userId': str(event.sender_id)}, {'$set': {"loveIntrest": {'chId': 11, 'affection': 0}}})
                     await event.answer('Вы успешно выбрали Дока!')
                 if str(event.data)[3:5] == '12':
-                    userDatabase.update_one(account, {'$set': {"loveIntrest": {'chId': 12, 'affection': 0}}})
+                    userDatabase.update_one({'userId': str(event.sender_id)}, {'$set': {"loveIntrest": {'chId': 12, 'affection': 0}}})
                     await event.answer('вы выбрали раста')
                 if str(event.data)[3:5] == '13':
-                    userDatabase.update_one(account, {'$set': {"loveIntrest": {'chId': 13, 'affection': 0}}})
+                    userDatabase.update_one({'userId': str(event.sender_id)}, {'$set': {"loveIntrest": {'chId': 13, 'affection': 0}}})
                     await event.answer('Вы успешно выбрали Зирована!')
                 if str(event.data)[3:5] == '14':
-                    userDatabase.update_one(account, {'$set': {"loveIntrest": {'chId': 14, 'affection': 0}}})
+                    userDatabase.update_one({'userId': str(event.sender_id)}, {'$set': {"loveIntrest": {'chId': 14, 'affection': 0}}})
                     await event.answer('Вы успешно выбрали Теслу!')
                 if str(event.data)[3:5] == '15':
-                    userDatabase.update_one(account, {'$set': {"loveIntrest": {'chId': 15, 'affection': 0}}})
+                    userDatabase.update_one({'userId': str(event.sender_id)}, {'$set': {"loveIntrest": {'chId': 15, 'affection': 0}}})
                     await event.answer('Вы успешно выбрали Армстронга!')
             else:
                 await event.answer('К сожалению, вы уже встречаетесь!')
@@ -535,7 +535,7 @@ async def callback(event):
                     newAffection = account["loveIntrest"]["affection"] -3
                 
                 originalMsg = await event.get_message()
-                userDatabase.update_one(account, {
+                userDatabase.update_one({'userId': str(event.sender_id)}, {
                     '$set': {"loveIntrest.affection": newAffection,
                             "loveIntrest.lastAction": originalMsg.date},
                     '$inc': {"scamCoins": -int(str(event.data)[3:z])}
