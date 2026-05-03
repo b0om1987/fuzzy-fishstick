@@ -494,7 +494,7 @@ async def callback(event):
     if str(event.data)[2] == 'l':
         if str(event.sender_id) == str(event.data)[5:-1]:
             account = userDatabase.find_one({'userId': str(event.sender_id)})
-            if not ("loveIntrest" in account):
+            if not ("loveIntrest.chId" in account):
                 if str(event.data)[3:5] == '11':
                     userDatabase.update_one({'userId': str(event.sender_id)}, {'$set': {"loveIntrest": {'chId': 11, 'affection': 0}}})
                     await event.answer('Вы успешно выбрали Дока!')
