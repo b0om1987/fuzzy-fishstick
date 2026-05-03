@@ -298,7 +298,7 @@ async def _casino_handler(event):
                     if randint(1, 10) != 7:
                         char_id = random.choices([16, 11, 12, 13, 14, 15], weights = [3, 20, 40, 30, 20, 30], k = 1)[0]
                         char_data = characterDatabase.find_one({'chID': char_id})
-                        userDatabase.update_one(account, {
+                        await userDatabase.update_one(account, {
                             '$addToSet': {'characters': char_id},
                             '$inc': {'scamCoins': -500}
                         })
@@ -306,7 +306,7 @@ async def _casino_handler(event):
                     else:
                         foodData = burgerDatabase.aggregate([{"$sample": {"size": 1}}])
                         foodData = next(foodData, None)
-                        userDatabase.update_one(account, {
+                        await userDatabase.update_one(account, {
                             '$inc': {'scamCoins': -500, f"ingredients.{foodData["name"]}": 1}
                             })
                         await event.reply(f'Вы получили...\n\n<b>Ингредиент для бургера!</b> В вашем инвентаре теперь есть <i>{foodData["name"]}</i>.', parse_mode='html')
