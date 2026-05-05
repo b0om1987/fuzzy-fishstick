@@ -495,19 +495,19 @@ async def callback(event):
         if str(event.sender_id) == str(event.data)[5:-1]:
             account = userDatabase.find_one({'userId': str(event.sender_id)})
             if str(event.data)[3:5] == '11':
-                userDatabase.update_one({'userId': str(event.sender_id)}, {'$set': {"loveIntrest": {'chId': 11, 'affection': 0}}})
+                userDatabase.update_one({'userId': str(event.sender_id)}, {'$set': {"loveIntrest": {'chId': 11, 'affection': 0, 'lastAction': datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z')}}})
                 await event.answer('Вы успешно выбрали Дока!')
             if str(event.data)[3:5] == '12':
-                userDatabase.update_one({'userId': str(event.sender_id)}, {'$set': {"loveIntrest": {'chId': 12, 'affection': 0}}})
+                userDatabase.update_one({'userId': str(event.sender_id)}, {'$set': {"loveIntrest": {'chId': 12, 'affection': 0, 'lastAction': datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z')}}})
                 await event.answer('вы выбрали раста')
             if str(event.data)[3:5] == '13':
-                userDatabase.update_one({'userId': str(event.sender_id)}, {'$set': {"loveIntrest": {'chId': 13, 'affection': 0}}})
+                userDatabase.update_one({'userId': str(event.sender_id)}, {'$set': {"loveIntrest": {'chId': 13, 'affection': 0, 'lastAction': datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z')}}})
                 await event.answer('Вы успешно выбрали Зирована!')
             if str(event.data)[3:5] == '14':
-                userDatabase.update_one({'userId': str(event.sender_id)}, {'$set': {"loveIntrest": {'chId': 14, 'affection': 0}}})
+                userDatabase.update_one({'userId': str(event.sender_id)}, {'$set': {"loveIntrest": {'chId': 14, 'affection': 0, 'lastAction': datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z')}}})
                 await event.answer('Вы успешно выбрали Теслу!')
             if str(event.data)[3:5] == '15':
-                userDatabase.update_one({'userId': str(event.sender_id)}, {'$set': {"loveIntrest": {'chId': 15, 'affection': 0}}})
+                userDatabase.update_one({'userId': str(event.sender_id)}, {'$set': {"loveIntrest": {'chId': 15, 'affection': 0, 'lastAction': datetime.strptime('2024-07-03 22:34:09+00:00', '%Y-%m-%d %H:%M:%S%z')}}})
                 await event.answer('Вы успешно выбрали Армстронга!')
         else:
             await event.answer('это не твоя кнопка ебло утиное блять')
